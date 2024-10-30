@@ -1,70 +1,4 @@
----#################################################################################################################################à
----CONNECT AS SYSTEM
 
--- USER SQL
-CREATE USER YELLOWCOM IDENTIFIED BY yellowcom
-DEFAULT TABLESPACE "USERS";
-
--- QUOTAS
-
--- ROLES
-GRANT "CONNECT" TO YELLOWCOM ;
-
--- QUOTAS
-ALTER USER YELLOWCOM QUOTA UNLIMITED ON "USERS";
-
--- ROLES
-ALTER USER YELLOWCOM DEFAULT ROLE "CONNECT";
-
-
--- SYSTEM PRIVILEGES
-
-
-
-GRANT DROP ANY TRIGGER TO YELLOWCOM ;
-GRANT CREATE TRIGGER TO YELLOWCOM ;
-GRANT CREATE ANY PROCEDURE TO YELLOWCOM ;
-GRANT CREATE VIEW TO YELLOWCOM ;
-GRANT CREATE TABLE TO YELLOWCOM ;
-GRANT DROP ANY TABLE TO YELLOWCOM ;
-GRANT CREATE TYPE TO YELLOWCOM ;
-GRANT CREATE TABLESPACE TO YELLOWCOM ;
-GRANT DROP ANY TYPE TO YELLOWCOM ;
-GRANT DROP ANY INDEX TO YELLOWCOM ;
-GRANT CREATE USER TO YELLOWCOM ;
-GRANT DROP ANY VIEW TO YELLOWCOM ;
-GRANT CREATE ANY VIEW TO YELLOWCOM ;
-GRANT CREATE ANY TRIGGER TO YELLOWCOM ;
-GRANT CREATE ANY TABLE TO YELLOWCOM ;
-GRANT CREATE ANY TYPE TO YELLOWCOM ;
-
----#################################################################################################################################à
----CONNECT AS YELLOWCOM
-
---CREATE OF TYPES--
-DROP TABLE Contract;
-DROP TABLE Customer;
-DROP TABLE Invoice;
-DROP TABLE Operation;
-DROP TABLE Promotion;
-DROP TABLE TariffPlan;
-DROP TYPE TariffPlanType FORCE;
-DROP TYPE CustomerType FORCE;
-DROP TYPE ContractType FORCE;
-DROP TYPE CallType FORCE;
-DROP TYPE CallTypeNT FORCE;
-DROP TYPE ClaimType FORCE;
-DROP TYPE InternetConnectionType FORCE;
-DROP TYPE InternetConnectionTypeNT FORCE;
-DROP TYPE InvoiceType FORCE;
-DROP TYPE OperationType FORCE;
-DROP TYPE OperationDetailType FORCE;
-DROP TYPE PromotionType FORCE;
-DROP TYPE RechargeableType FORCE;
-DROP TYPE SubscriptionBasedType FORCE;
-DROP TYPE SubscriptionTariffPlanType FORCE;
-DROP TYPE TextType FORCE;
-DROP TYPE TextTypeNT FORCE;
 /
 CREATE OR REPLACE TYPE ContractType;
 /
@@ -541,34 +475,74 @@ execute populateTextOperation;
 execute populateInvoice;
 commit work;
 
+-- EXAMPLE OF TRIGGER 
+CREATE OR REPLACE 
+TRIGGER CheckCredit
+AFTER INSERT OR UPDATE ON Operation
+FOR EACH ROW
+DECLARE
+ contractRT RechargeableType;
+BEGIN
+ SELECT TREAT(DEREF(:new.contract) AS RechargeableType) INTO contractRT
+ FROM dual;
+ IF contractRT IS NOT NULL 
+ THEN
+  IF contractRT.credit < 0
+  THEN 
+   RAISE_APPLICATION_ERROR(-20002,'Credit is zero!');
+  END IF;
+ END IF;
+END;
+/
 
+INSERT INTO Contract VALUES (RechargeableType('NEGATIVE_CONTRACT', 
+    (SELECT ref(cs) FROM Customer cs WHERE cs.fiscalCode = 'LPLMHL96M12A225B'), 
+    '3278499999', NULL, -50));
+	
 /**
-QUERY OPTIMIZATION
+1 row inserted. 
+Note that the insert is possible because the trigger is defined on table operation
+while the insert is on table contract.
+**/
+
+INSERT INTO Operation VALUES ('01-JAN-97',  
+    (SELECT ref(ct) FROM Contract ct WHERE ct.codecontract = 'NEGATIVE_CONTRACT'), 
+    CallType('Call', 5, '+3932499999'), NULL);
+	
+/**
+Error starting at line : 557 in command -
+INSERT INTO Operation VALUES ('01-JAN-97',  
+    (SELECT ref(ct) FROM Contract ct WHERE ct.codecontract = 'NEGATIVE_CONTRACT'), 
+    CallType('Call', 5, '+3932499999'), NULL)
+Error report -
+ORA-20002: Credit is zero!
+ORA-06512: at "YELLOWCOM.CHECKCREDIT", line 10
+ORA-04088: error during execution of trigger 'YELLOWCOM.CHECKCREDIT'
 **/
 
 
-SELECT * FROM Customer cu WHERE cu.surname < 'a';
-SELECT *
-FROM TABLE(DBMS_XPLAN.DISPLAY (FORMAT=>'ALL +OUTLINE'));
 
-SELECT * FROM Customer cu WHERE cu.surname < 'a';
-
-
-CREATE INDEX surname_idx ON Customer(surname);
-EXPLAIN FOR
-SELECT /*+ INDEX(cu, surname_idx) */ * FROM Customer cu WHERE cu.surname < 'a';
-SELECT *
-FROM TABLE(DBMS_XPLAN.DISPLAY (FORMAT=>'ALL +OUTLINE'));
-/
-/*
-delete from Contract;
-delete from Customer;
-delete from Operation;
-delete from Invoice;
-commit work;*/
-/
-/*execute populateCalloperation;
-execute populateInternetOperation;
-execute populateTextOperation;
-execute populateInvoice;
-commit work;*/
+-- DROP IF THE FOLLOWING TABLES EXIST --
+DROP TABLE Contract;
+DROP TABLE Customer;
+DROP TABLE Invoice;
+DROP TABLE Operation;
+DROP TABLE Promotion;
+DROP TABLE TariffPlan;
+DROP TYPE TariffPlanType FORCE;
+DROP TYPE CustomerType FORCE;
+DROP TYPE ContractType FORCE;
+DROP TYPE CallType FORCE;
+DROP TYPE CallTypeNT FORCE;
+DROP TYPE ClaimType FORCE;
+DROP TYPE InternetConnectionType FORCE;
+DROP TYPE InternetConnectionTypeNT FORCE;
+DROP TYPE InvoiceType FORCE;
+DROP TYPE OperationType FORCE;
+DROP TYPE OperationDetailType FORCE;
+DROP TYPE PromotionType FORCE;
+DROP TYPE RechargeableType FORCE;
+DROP TYPE SubscriptionBasedType FORCE;
+DROP TYPE SubscriptionTariffPlanType FORCE;
+DROP TYPE TextType FORCE;
+DROP TYPE TextTypeNT FORCE;

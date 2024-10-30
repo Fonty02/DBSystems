@@ -47,6 +47,15 @@ CREATE OR REPLACE TYPE OperationType AS OBJECT (
 NOT FINAL
 ;
 /
+CREATE OR REPLACE TYPE SubscriptionBasedType UNDER ContractType
+(  IBAN VARCHAR(22) )
+NOT FINAL;
+/
+CREATE OR REPLACE TYPE RechargeableType UNDER ContractType
+(  credit NUMBER(10,2) )
+NOT FINAL;
+
+/
 CREATE OR REPLACE TYPE CallType UNDER OperationType (
     duration NUMBER,
     telephone VARCHAR2(13)
@@ -159,6 +168,74 @@ CREATE TABLE RechargeableContracts OF RechargeableType
 CREATE TABLE Promotions OF PromotionType
 /
 
+
+--DEFINITION OF TRIGGERS
+
+--TRIGGER 1 -> AVOID INSERT/UPDATE an OPERATION with credit < 0
+CREATE OR REPLACE TRIGGER creditCheck
+AFTER INSERT OR UPDATE ON Operations
+FOR EACH ROW
+DECLARE
+    contractRT RechargeableType;
+BEGIN
+    --SE il contratto è di tipo subscriptionBased, allora contractRT sarà NULL
+    SELECT TREAT(DEREF(:NEW.contract) AS RechargeableType) INTO contractRT FROM DUAL; --dual is a dummy table
+    IF contractRT IS NOT NULL AND contractRT.credit <= 0 THEN
+        RAISE_APPLICATION_ERROR(-20000, 'Credit cannot be negative');
+    END IF;
+END;
+/
+
+--Trigger 2 -> BlanaceCredit. An automatic trigger that updates the credit of a rechargeable contract after each call, text or internet operation.
+DA FIXARE!!!!!!!!!!!!!!!!!!!!!!!!
+
+CREATE OR REPLACE TRIGGER BalanceCredit
+AFTER INSERT ON Operations
+FOR EACH ROW
+DECLARE
+contractRT RechargeableType;
+ stp SubscriptionTariffPlanType;
+ tp TariffPlanType;
+ callOperation CallType;
+ textOperation TextType;
+ internetOperation InternetConnectionType;
+BEGIN
+ SELECT TREAT(DEREF(:new.contract) AS RechargeableType) INTO contractRT
+ FROM dual;
+ IF contractRT IS NOT NULL 
+ THEN
+  SELECT TREAT(DEREF(contractRT.tariffPlan) AS SubscriptionTariffPlanType) INTO stp
+  FROM dual;
+   IF stp IS NULL 
+   THEN
+    SELECT TREAT(DEREF(contractRT.tariffPlan) AS TariffPlanType) INTO tp
+    FROM dual;
+    SELECT TREAT(:new.details AS CallType) INTO callOperation --check if it is a call
+    FROM dual;
+     IF callOperation IS NOT NULL 
+     THEN
+      contractRT.credit := contractRT.credit - (tp.callPrice * callOperation.durationCall);
+      UPDATE Contract ct SET value(ct) = contractRT WHERE ct.codeContract = contractRT.codeContract;
+     END IF;
+    SELECT TREAT(:new.details AS TextType) INTO textOperation --check if it is a text
+    FROM dual;
+     IF textOperation IS NOT NULL 
+     THEN
+      contractRT.credit := contractRT.credit - tp.smsPrice;
+      UPDATE Contract ct SET value(ct) = contractRT WHERE ct.codeContract = contractRT.codeContract;
+     END IF;
+    SELECT TREAT(:new.details AS InternetConnectionType) INTO internetOperation --check if it is a internet operation
+    FROM dual;
+     IF internetOperation IS NOT NULL 
+     THEN
+      contractRT.credit := contractRT.credit - (tp.internetPrice * internetOperation.amountOfData);
+      UPDATE Contract ct SET value(ct) = contractRT WHERE ct.codeContract = contractRT.codeContract;
+     END IF;
+   END IF;
+ END IF;
+END;
+/
+
 --INSERTS
 
 -- Insert data into Customers
@@ -187,10 +264,11 @@ INSERT INTO SubscriptionTariffPlans VALUES (
 
 -- Insert data into Contracts
 INSERT INTO Contracts VALUES (
-    'CONTRACT1', '1234567890123', (SELECT REF(c) FROM Customers c WHERE c.fiscalCode = 'JHNDOE1234567890'), (SELECT REF(t) FROM TariffPlans t WHERE t.tariffPlanCode = 'BASIC')
+   RechargeableType('CONTRACT1', '387654321', (SELECT REF(c) FROM Customers c WHERE c.fiscalCode = 'JHNDOE1234567890'), (SELECT REF(t) FROM TariffPlans t WHERE t.tariffPlanCode = 'BASIC'), 10.00)
 );
 INSERT INTO Contracts VALUES (
-    'CONTRACT2', '9876543210987', (SELECT REF(c) FROM Customers c WHERE c.fiscalCode = 'JNSMTH0987654321'), (SELECT REF(t) FROM TariffPlans t WHERE t.tariffPlanCode = 'PREMIUM')
+    SubscriptionBased('CONTRACT2', '123456783', (SELECT REF(c) FROM Customers c WHERE c.fiscalCode = 'JNSMTH0987654321'), (SELECT REF(t) FROM TariffPlans t WHERE t.tariffPlanCode = 'PREMIUM'), 'IT60X05')
+    
 );
 
 -- Insert data into Calls
@@ -234,15 +312,7 @@ INSERT INTO Claims VALUES (
     TO_DATE('2023-06-01', 'YYYY-MM-DD'), 'Service disruption', 10.00, (SELECT REF(i) FROM Invoices i WHERE i.dateTime = TO_DATE('2023-04-01', 'YYYY-MM-DD'))
 );
 
--- Insert data into SubscriptionBasedContracts
-INSERT INTO SubscriptionBasedContracts VALUES (
-    'CONTRACT1', '1234567890123', (SELECT REF(c) FROM Customers c WHERE c.fiscalCode = 'JHNDOE1234567890'), (SELECT REF(t) FROM TariffPlans t WHERE t.tariffPlanCode = 'BASIC'), 'IT60X0542811101000000123456'
-);
 
--- Insert data into RechargeableContracts
-INSERT INTO RechargeableContracts VALUES (
-    'CONTRACT2', '9876543210987', (SELECT REF(c) FROM Customers c WHERE c.fiscalCode = 'JNSMTH0987654321'), (SELECT REF(t) FROM TariffPlans t WHERE t.tariffPlanCode = 'PREMIUM'), 50.00
-);
 
 -- Insert data into Promotions
 INSERT INTO Promotions VALUES (
@@ -264,17 +334,33 @@ VALUES (
     )
 );
 
+INSERT INTO Operations
+VALUES (
+    InternetType(
+        TO_DATE('2023-02-01', 'YYYY-MM-DD'), -- datetime
+        EMPTY_BLOB(),                        -- data (BLOB vuoto)
+        (SELECT REF(c) FROM Contracts c WHERE c.codeContract = 'CONTRACT2'), -- contract REF
+        500                                  -- quantità di dati
+    )
+);
 
 
---SELECT o.datetime, deref(o.contract) as CONTRACT FROM Operations o;
---SELECT o.datetime, DEREF(o.contract) AS CONTRACT FROM Operations o WHERE VALUE(o) IS OF (CallType);
-SELECT o.datetime
-FROM Operations o
-WHERE VALUE(o) IS OF (CallType);
+
+/*
+SELECT VALUE(o) as Operation
+FROM Operations o;
+THE OUTPUT IS
+OPERATION(DATETIME, DATA, CONTRACT, DURATION, TELEPHONE)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CALLTYPE('01/01/23', '', SYSTEM.CONTRACTTYPE('CONTRACT1', '1234567890123', 'oracle.sql.REF@e01d0430', 'oracle.sql.REF@e01f0430'), 120, '1234567890123')
+INTERNETTYPE('01/02/23', '', SYSTEM.CONTRACTTYPE('CONTRACT2', '9876543210987', 'oracle.sql.REF@e01e0430', 'oracle.sql.REF@e0200430'), 500)
+*/
+
+--To access attributes of a subtype of a row or column's declared type, you can use the TREAT FUNCTION
+SELECT DEREF(o.contract).codecontract contratto ,TREAT(VALUE(o) AS CallType).duration duration FROM Operations o WHERE VALUE(o) IS OF (CallType);
 
 
-
-
+/
 --DROP TABLES
 DROP TABLE Customers;
 DROP TABLE TariffPlans;
@@ -290,10 +376,13 @@ DROP TABLE SubscriptionBasedContracts;
 DROP TABLE RechargeableContracts;
 DROP TABLE Promotions;
 
+
+
 --DROP TYPES
 DROP TYPE PromotionType FORCE;
 DROP TYPE RechargeableType FORCE;
 DROP TYPE SubscriptionBased FORCE;
+DROP TYPE SubscriptionBasedType FORCE;
 DROP TYPE ContractType FORCE;
 DROP TYPE ClaimType FORCE;
 DROP TYPE InvoiceType FORCE;
@@ -307,4 +396,7 @@ DROP TYPE OperationType FORCE;
 DROP TYPE SubscriptionTariffPlan FORCE;
 DROP TYPE TariffPlanType FORCE;
 DROP TYPE CustomerType FORCE;
+
+
+
 
