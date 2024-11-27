@@ -1,5 +1,3 @@
-
-/
 CREATE OR REPLACE TYPE ContractType;
 /
 CREATE OR REPLACE TYPE TariffPlanType;
@@ -508,7 +506,43 @@ while the insert is on table contract.
 INSERT INTO Operation VALUES ('01-JAN-97',  
     (SELECT ref(ct) FROM Contract ct WHERE ct.codecontract = 'NEGATIVE_CONTRACT'), 
     CallType('Call', 5, '+3932499999'), NULL);
-	
+
+
+-- EXAMPLE FOR INDEX
+
+
+CREATE INDEX surname_index ON Customer(surname);
+
+EXPLAIN Plan
+SET STATEMENT_ID = 'customer_order_by_surname'
+FOR SELECT surname FROM Customer ORDER BY surname ASC;
+
+
+SELECT operation,options,object_name FROM plan_table WHERE statement_id = 'customer_order_by_surname' ORDER BY id;
+--possiamo notare come il DBMS sta usando l'indice per ordinare i risultati
+
+EXPLAIN PLAN SET STATEMENT_ID = 'customer_<a' FOR SELECT * FROM Customer WHERE surname<'a';
+SELECT operation,options,object_name FROM plan_table WHERE statement_id = 'customer_<a' ORDER BY id;
+-- Qui c'è anche il Table Access e nell'altro no, ma sono solo stime, non è detto che sia sempre così
+
+--AUTOTRACE -> Rispetto all'EXPLAIN PLAN ci permette di vedere come il DBMS sta eseguendo la query, e non solo una stima
+--SET the autotrace on
+SET AUTOTRACE ON
+SELECT * FROM Customer WHERE surname<'a';
+
+--BITMAP INDEX -> è un tipo di indice usato per il join tra tabelle, in particolare quando si hanno pochi valori distinti
+
+--CREATE BITMAP INDEX employees_bitmap_idx ON employees(jobs.job_title) FROM employees,jobs WHERE employees.job_id=jobs.job_id;
+
+--CREATE BITMAP INDEX customer_bm_index ON customer(contract) FROM ...; <>TODO
+
+--indici su piu colonne ->  L ordine degli indici da l ordinamento delle tuple
+
+
+
+
+
+
 /**
 Error starting at line : 557 in command -
 INSERT INTO Operation VALUES ('01-JAN-97',  
@@ -521,8 +555,9 @@ ORA-04088: error during execution of trigger 'YELLOWCOM.CHECKCREDIT'
 **/
 
 
-
+/**
 -- DROP IF THE FOLLOWING TABLES EXIST --
+DROP INDEX surname_index;
 DROP TABLE Contract;
 DROP TABLE Customer;
 DROP TABLE Invoice;
@@ -545,4 +580,4 @@ DROP TYPE RechargeableType FORCE;
 DROP TYPE SubscriptionBasedType FORCE;
 DROP TYPE SubscriptionTariffPlanType FORCE;
 DROP TYPE TextType FORCE;
-DROP TYPE TextTypeNT FORCE;
+DROP TYPE TextTypeNT FORCE;**/
