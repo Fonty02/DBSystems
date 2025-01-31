@@ -1,0 +1,18 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Conceptual Design}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Requirements}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Analysis}{4}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Glossary of Terms}{4}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Level of Abstraction}{5}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Reorganization of Concepts}{5}{subsubsection.1.2.3}%
+\contentsline {subsubsection}{\numberline {1.2.4}Entity-Relationship Diagram}{7}{subsubsection.1.2.4}%
+\contentsline {paragraph}{SKELETON SCHEMA}{7}{section*.11}%
+\contentsline {paragraph}{FINAL SCHEMA}{7}{section*.13}%
+\contentsline {subsubsection}{\numberline {1.2.5}Business Rules}{8}{subsubsection.1.2.5}%
+\contentsline {section}{\numberline {2}Logical Design}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Volume Table}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Access Table}{10}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Redundancies and Generalization}{14}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.3}UML Schema}{15}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Datawarehouse}{16}{section.3}%
