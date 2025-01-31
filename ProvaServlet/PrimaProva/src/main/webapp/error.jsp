@@ -58,49 +58,13 @@
                 <p class="text-red-600 font-medium mb-2">Credenziali non valide</p>
                 <p class="text-gray-600">Le credenziali inserite non sono corrette. Per favore riprova.</p>
             </div>
-            
-            <form action="LoginServlet" method="POST" class="space-y-6">
-                <div>
-                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
-                        Username
-                    </label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        required
-                        class="input-field w-full px-4 py-3 rounded-lg focus:outline-none"
-                        placeholder="Inserisci il tuo username"
-                    >
-                </div>
-
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-                        Password
-                    </label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        required
-                        class="input-field w-full px-4 py-3 rounded-lg focus:outline-none"
-                        placeholder="Inserisci la tua password"
-                    >
-                </div>
-
-                <button 
-                    type="submit" 
-                    class="retry-button w-full text-white font-medium py-3 px-4 rounded-lg hover:opacity-90"
-                >
-                    Riprova
-                </button>
-
-                <div class="text-center">
-                    <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">
-                        Hai dimenticato la password?
-                    </a>
-                </div>
-            </form>
+               <button 
+    type="button" 
+    class="retry-button w-full text-white font-medium py-3 px-4 rounded-lg hover:opacity-90" 
+    onclick="window.location.href='login.jsp';"
+>
+    Riprova
+</button>
         </div>
     </div>
 </body>
