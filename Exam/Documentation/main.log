@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  31 JAN 2025 19:39
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  31 JAN 2025 22:43
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/fonta/Desktop/Magistrale/Repo/DBSystems/Exam/Documentation/main
@@ -1517,11 +1517,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
-<images/ER.png, id=122, 1094.0875pt x 572.1375pt>
+<images/ER.png, id=122, 1094.0875pt x 626.34pt>
 File: images/ER.png Graphic file (type png)
 <use images/ER.png>
 Package luatex.def Info: images/ER.png  used on input line 149.
-(luatex.def)             Requested size: 424.06033pt x 221.75336pt.
+(luatex.def)             Requested size: 424.06033pt x 242.76158pt.
 
 
 [7<./images/SkeletonSchema.png>]
@@ -1595,11 +1595,11 @@ Package luatex.def Info: images/Fact1.png  used on input line 8.
 
 
 [16<./images/Fact1.png>]
-<images/Fact2.png, id=192, 734.745pt x 1014.79124pt>
+<images/Fact2.png, id=192, 733.74126pt x 1014.79124pt>
 File: images/Fact2.png Graphic file (type png)
 <use images/Fact2.png>
 Package luatex.def Info: images/Fact2.png  used on input line 22.
-(luatex.def)             Requested size: 424.0671pt x 414.06961pt.
+(luatex.def)             Requested size: 424.06996pt x 414.06961pt.
 
 
 [17<./images/Fact2.png>])
@@ -1623,7 +1623,7 @@ Here is how much of LuaTeX's memory you used:
 73
  61090 multiletter control sequences out of 65536+600000
  66 fonts using 4155967 bytes
- 87i,11n,88p,783b,433s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,11n,88p,783b,435s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/U
 sers/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users
 /fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -1637,7 +1637,7 @@ pe1/public/lm/lmbx8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/lm/lmr12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/lm/lmr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/lm/lmri12.pfb>
-Output written on main.pdf (19 pages, 1561196 bytes).
+Output written on main.pdf (19 pages, 1563532 bytes).
 
 PDF statistics: 243 PDF objects out of 1000 (max. 8388607)
  60 named destinations out of 1000 (max. 131072)
