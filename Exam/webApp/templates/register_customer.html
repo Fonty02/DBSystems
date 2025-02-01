@@ -1,0 +1,32 @@
+<!-- templates/register_customer.html -->
+{% extends "base.html" %}
+{% block title %}Register Customer{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Register New Customer</h2>
+    <form method="POST">
+        <label for="code">Customer Code:</label>
+        <input type="text" id="code" name="code" required>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="cust_type">Type:</label>
+        <select id="cust_type" name="cust_type" required>
+            <option value="Commercial">Commercial</option>
+            <option value="Residential">Residential</option>
+        </select>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <button type="submit" class="btn">Register</button>
+    </form>
+</div>
+{% endblock %}

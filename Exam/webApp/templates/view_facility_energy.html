@@ -1,0 +1,31 @@
+<!-- templates/view_facility_energy.html -->
+{% extends "base.html" %}
+{% block title %}View Facility Energy{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>View Facility Energy Output</h2>
+    {% if facilities %}
+    <form method="POST">
+        <label for="facility">Select Facility:</label>
+        <select name="facility" id="facility" required>
+            {% for facility in facilities %}
+            <option value="{{ facility }}">{{ facility }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn">Calculate Energy Output</button>
+    </form>
+    {% else %}
+    <p>No facilities available</p>
+    {% endif %}
+    
+    {% if error %}
+    {% endif %}
+    
+    {% if energy_output is not none %}
+    <div class="result">
+        <h3>Facility Energy Output</h3>
+        <p>Total Energy Output: {{ energy_output }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

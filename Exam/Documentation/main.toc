@@ -10,9 +10,17 @@
 \contentsline {paragraph}{SKELETON SCHEMA}{7}{section*.11}%
 \contentsline {paragraph}{FINAL SCHEMA}{7}{section*.13}%
 \contentsline {subsubsection}{\numberline {1.2.5}Business Rules}{8}{subsubsection.1.2.5}%
-\contentsline {section}{\numberline {2}Logical Design}{9}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Volume Table}{9}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Access Table}{9}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Redundancies and Generalization}{13}{subsubsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.3}UML Schema}{14}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Datawarehouse}{15}{section.3}%
+\contentsline {section}{\numberline {2}Logical Design}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Volume Table}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Access Table}{10}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Redundancies and Generalization}{14}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.3}UML Schema}{15}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Implementation}{16}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Types Definition}{16}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Tables Definition}{17}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Population procedure}{19}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Trigger}{24}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Operations}{29}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Web Interface}{34}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Backend}{34}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Frontend}{40}{subsection.4.2}%

@@ -1,0 +1,28 @@
+<!-- templates/ranked_facilities.html -->
+{% extends "base.html" %}
+{% block title %}Ranked Facilities{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Ranked List of Facilities by Efficiency Score</h2>
+    {% if facilities %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Facility Name</th>
+                    <th>Efficiency Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for facility in facilities %}
+                <tr>
+                    <td>{{ facility[0] }}</td>
+                    <td>{{ facility[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No facilities found </p>
+    {% endif %}
+</div>
+{% endblock %}

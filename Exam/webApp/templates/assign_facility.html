@@ -1,0 +1,17 @@
+<!-- templates/assign_facility.html -->
+{% extends "base.html" %}
+{% block title %}Assign Facility{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Assign Facility to Management Team</h2>
+    <form method="POST">
+        <label for="facility_name">Facility Name:</label>
+        <input type="text" id="facility_name" name="facility_name" required>
+
+        <label for="team_code">Team Code:</label>
+        <input type="text" id="team_code" name="team_code" required>
+
+        <button type="submit" class="btn">Assign</button>
+    </form>
+</div>
+{% endblock %}

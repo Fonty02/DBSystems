@@ -1,4 +1,17 @@
 
+DROP PROCEDURE DropTypes;
+DROP PROCEDURE DropTables;
+DROP PROCEDURE CreateTypes;
+DROP PROCEDURE CreateTables;
+DROP PROCEDURE SchemaCreation;
+DROP PROCEDURE PopulateDatabase;
+DROP PROCEDURE proc_register_customer;
+DROP PROCEDURE proc_add_contract;
+DROP PROCEDURE proc_assign_facility;
+DROP FUNCTION func_get_facility_energy;
+DROP PROCEDURE proc_get_ranked_facilities;
+
+
 
 CREATE OR REPLACE Procedure DropTypes IS
 BEGIN
@@ -11,7 +24,6 @@ BEGIN
     EXECUTE IMMEDIATE 'DROP TYPE FeedbackTY FORCE';
 END;
 /
---drop all table
 
 CREATE OR REPLACE Procedure DropTables IS
 BEGIN
@@ -161,7 +173,6 @@ BEGIN
         Type NOT NULL
 
     )';
-    -- Tabella Feedback
    EXECUTE IMMEDIATE ' CREATE TABLE Feedback OF FeedbackTY (
         Code PRIMARY KEY,
         CONSTRAINT chk_feedback_score CHECK (Score BETWEEN 1 AND 5),
@@ -182,7 +193,7 @@ BEGIN
 END;
 /
 
--- Popolamento del database
+
 CREATE OR REPLACE PROCEDURE PopulateDatabase(
     p_num_customers IN NUMBER,
     p_num_accounts IN NUMBER,
@@ -190,8 +201,8 @@ CREATE OR REPLACE PROCEDURE PopulateDatabase(
     p_num_feedbacks IN NUMBER
 ) IS
 BEGIN
-    -- Popola Team
-    FOR i IN 1..100 LOOP
+
+    FOR i IN 1..50 LOOP
         INSERT INTO Team VALUES (
             TeamTY(
                 'Team' || TO_CHAR(i),
@@ -202,39 +213,47 @@ BEGIN
     END LOOP;
 
 
-    -- Popola Employee per ogni team con 5 dipendenti (il primo è Manager)
-    FOR team_id IN 1..100 LOOP
-        DECLARE
-            v_employee_code VARCHAR2(20);
-            v_team_code     VARCHAR2(20) := 'Team' || TO_CHAR(team_id);
-            v_dob           DATE;
-            v_doh           DATE;
-            v_manager       CHAR(1):= 'Y';
-        BEGIN
-            -- Genera un codice univoco per l'impiegato
-            v_employee_code := 'FC' || TO_CHAR((team_id - 1) * 5 + team_id);
-            
-            -- Genera la data di nascita (tra 18 e 60 anni fa)
-            v_dob := ADD_MONTHS(SYSDATE, -ROUND(DBMS_RANDOM.VALUE(18*12, 60*12)));
-            
-            -- Genera la data di assunzione (dopo la data di nascita)
-            v_doh := v_dob + ROUND(DBMS_RANDOM.VALUE(18*365, 60*365));
-            -- Inserimento dell'impiegato
-            INSERT INTO Employee VALUES (
-                EmployeeTY(
-                    v_employee_code,
-                    'Name' || v_employee_code,
-                    'Surname' || v_employee_code,
-                    v_dob,
-                    v_doh,
-                    v_manager,
-                    (SELECT REF(t) FROM Team t WHERE t.Code = v_team_code)
-                )
-            );
-        END;
-    END LOOP;  
 
-    -- Popola Facility
+    FOR team_id IN 1..50 LOOP
+        FOR i IN 1..5 LOOP
+            DECLARE
+                v_employee_code VARCHAR2(20);
+                v_team_code     VARCHAR2(20) := 'Team' || TO_CHAR(team_id);
+                v_dob           DATE;
+                v_doh           DATE;
+                v_manager       CHAR(1);
+            BEGIN
+
+                IF i = 1 THEN
+                    v_manager := 'Y';
+                ELSE
+                    v_manager := 'N';
+                END IF;
+
+                v_employee_code := 'FC' || TO_CHAR((team_id - 1) * 5 + i);
+                
+
+                v_dob := ADD_MONTHS(SYSDATE, -ROUND(DBMS_RANDOM.VALUE(18*12, 60*12)));
+                
+
+                v_doh := v_dob + ROUND(DBMS_RANDOM.VALUE(18*365, 60*365));
+
+                INSERT INTO Employee VALUES (
+                    EmployeeTY(
+                        v_employee_code,
+                        'Name' || v_employee_code,
+                        'Surname' || v_employee_code,
+                        v_dob,
+                        v_doh,
+                        v_manager,
+                        (SELECT REF(t) FROM Team t WHERE t.Code = v_team_code)
+                    )
+                );
+            END;
+        END LOOP;  
+    END LOOP;
+
+
     FOR i IN 1..100 LOOP
         INSERT INTO Facility VALUES (
             FacilityTY(
@@ -249,7 +268,7 @@ BEGIN
                 100,
                 900000000,
                 0,
-                (SELECT REF(t) FROM Team t WHERE t.Code = 'Team' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, 100))))
+                (SELECT REF(t) FROM Team t WHERE t.Code = 'Team' || TO_CHAR(CEIL(i/2)))
             )
         );
     END LOOP;
@@ -257,15 +276,14 @@ BEGIN
     
     
     
-    -- Popola Customer
+
     FOR i IN 1..p_num_customers LOOP
         DECLARE
             v_dob DATE;
         BEGIN
-            -- Genera la data di nascita tra 18 e 60 anni fa (maggiorenne garantito)
+           
             v_dob := ADD_MONTHS(SYSDATE, -ROUND(DBMS_RANDOM.VALUE(18*12, 60*12)));
 
-            -- Inserimento del Customer
             INSERT INTO Customer VALUES (
                 CustomerTY(
                     'Customer' || TO_CHAR(i),
@@ -279,7 +297,6 @@ BEGIN
         END;
     END LOOP;
 
-    -- Popola Account
     FOR i IN 1..p_num_accounts LOOP
         INSERT INTO Account VALUES (
             AccountTY(
@@ -289,7 +306,6 @@ BEGIN
         );
     END LOOP;
 
-    -- Popola Contract
     FOR i IN 1..p_num_contracts LOOP
         DECLARE
             v_account_code VARCHAR2(20);
@@ -299,38 +315,26 @@ BEGIN
             v_end_date DATE;
             v_active CHAR(1);
         BEGIN
-            -- Seleziona un account casuale
             v_account_code := 'Account' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, p_num_accounts)));
 
-            -- Recupera il tipo di cliente associato all'account
             SELECT c.Type 
             INTO v_customer_type
             FROM Account a
             JOIN Customer c ON DEREF(a.Customer).Code = c.Code
             WHERE a.Code = v_account_code;
-
-            -- Genera la data di inizio del contratto
             v_start_date := SYSDATE;
-
-            -- Genera la durata del contratto (tra 1 e 12 mesi)
             v_duration := ROUND(DBMS_RANDOM.VALUE(1, 12));
-
-            -- Calcola la data di fine contratto
             v_end_date := ADD_MONTHS(v_start_date, v_duration);
-
-            -- Determina se il contratto è ancora attivo
             IF v_end_date >= SYSDATE THEN
                 v_active := 'Y';
             ELSE
                 v_active := 'N';
             END IF;
-
-            -- Inserimento del contratto con la logica aggiornata
             INSERT INTO Contract VALUES (
                 ContractTY(
                     'Contract' || TO_CHAR(i),
-                    v_active,  -- 'Y' se attivo, 'N' se scaduto
-                    v_customer_type,  -- Tipo coerente con il cliente
+                    v_active,  
+                    v_customer_type, 
                     v_start_date,
                     DBMS_RANDOM.VALUE(100, 1000),
                     CASE MOD(i, 3)
@@ -338,7 +342,7 @@ BEGIN
                         WHEN 1 THEN 4500
                         WHEN 2 THEN 10000
                     END,
-                    v_duration,  -- Durata del contratto (in mesi)
+                    v_duration, 
                     (SELECT REF(a) FROM Account a WHERE a.Code = v_account_code),
                     (SELECT REF(f) FROM Facility f WHERE f.Name = 'Facility' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, 100))))
                 )
@@ -346,7 +350,6 @@ BEGIN
         END;
     END LOOP;
 
-    -- Popola Feedback
     FOR i IN 1..p_num_feedbacks LOOP
         INSERT INTO Feedback VALUES (
             FeedbackTY(
@@ -354,7 +357,7 @@ BEGIN
                 'Message' || TO_CHAR(i),
                 ROUND(DBMS_RANDOM.VALUE(1, 5)),
                 (SELECT REF(a) FROM Account a WHERE a.Code = 'Account' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, p_num_accounts)))),
-                (SELECT REF(t) FROM Team t WHERE t.Code = 'Team' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, 100))))
+                (SELECT REF(t) FROM Team t WHERE t.Code = 'Team' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, 50))))
             )
         );
     END LOOP;
@@ -367,6 +370,138 @@ BEGIN
     SchemaCreation;
 END;
 /
+
+--------------------------------------------------------------------
+-- Procedure 1: Add a new customer to the database
+--------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE proc_register_customer (
+    p_code      IN VARCHAR2,
+    p_name      IN VARCHAR2,
+    p_surname   IN VARCHAR2,
+    p_email     IN VARCHAR2,
+    p_type      IN VARCHAR2,  -- 'Commercial' o 'Residential'
+    p_dob       IN DATE
+) AS
+BEGIN
+    INSERT INTO Customer
+    VALUES (
+        CustomerTY(p_code, p_name, p_surname, p_email, p_type, p_dob)
+    );
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------
+-- Procedure 2: Add a new contract to the database
+--------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE proc_add_contract (
+    p_contract_id    IN VARCHAR2,
+    p_contract_type  IN VARCHAR2,  -- 'Commercial' o 'Residential'
+    p_start_date     IN DATE,
+    p_cost           IN NUMBER,
+    p_energy_plan    IN NUMBER,    -- 2500, 4500 o 10000
+    p_duration       IN NUMBER,    
+    p_account_code   IN VARCHAR2,
+    p_facility_name  IN VARCHAR2
+) AS
+BEGIN
+    INSERT INTO Contract
+    VALUES (
+        ContractTY(
+            p_contract_id,
+            'N',
+            p_contract_type,
+            p_start_date,
+            p_cost,
+            p_energy_plan,
+            p_duration,
+            (SELECT REF(a) FROM Account a WHERE a.Code = p_account_code),
+            (SELECT REF(f) FROM Facility f WHERE f.Name = p_facility_name)
+        )
+    );
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+       RAISE_APPLICATION_ERROR(-20011, 'Errore in proc_add_contract: ' || SQLERRM);
+END;
+/
+
+--------------------------------------------------------------------
+-- Procedure 3: Assign a facility to a team
+--------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE proc_assign_facility (
+    p_facility_name IN VARCHAR2,
+    p_team_code     IN VARCHAR2
+) AS
+    v_count_team NUMBER;
+    v_count_facility NUMBER;
+BEGIN
+    -- Check if the facility exists
+    SELECT COUNT(*) INTO v_count_facility
+    FROM Facility
+    WHERE Name = p_facility_name;
+
+    IF v_count_facility = 0 THEN
+        RAISE_APPLICATION_ERROR(-20013, 'Error: Facility not found!');
+    END IF;
+
+    -- Check if the team exists
+    SELECT COUNT(*) INTO v_count_team
+    FROM Team
+    WHERE Code = p_team_code;
+
+    IF v_count_team = 0 THEN
+        RAISE_APPLICATION_ERROR(-20014, 'Error: Team not found!');
+    END IF;
+    UPDATE Facility
+    SET Team = (SELECT REF(t) FROM Team t WHERE t.Code = p_team_code)
+    WHERE Name = p_facility_name;
+
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20012, 'Errore in proc_assign_facility: ' || SQLERRM);
+END;
+/
+--------------------------------------------------------------------
+-- Function 4: Return the total energy output of a facility
+--------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION func_get_facility_energy (
+    p_facility_name IN VARCHAR2
+) RETURN NUMBER AS
+    v_total_energy NUMBER;
+BEGIN
+     
+    -- Return the total energy output of the facility
+    SELECT f.SumOutputEnergy
+      INTO v_total_energy
+      FROM Facility f
+     WHERE f.Name = p_facility_name;
+    RETURN v_total_energy;
+EXCEPTION
+    WHEN OTHERS THEN
+       RAISE_APPLICATION_ERROR(-20013, 'Errore in func_get_facility_energy: ');
+END;
+/
+
+--------------------------------------------------------------------
+-- Procedure 5: Get the ranked facilities by efficiency score
+--------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE proc_get_ranked_facilities (
+    p_cursor OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN p_cursor FOR
+      SELECT Name, EfficiencyScore
+        FROM Facility
+       ORDER BY EfficiencyScore DESC;
+END;
+/
+
+
+
+
 
 
 CREATE OR REPLACE TRIGGER trg_employee_manager
@@ -389,9 +524,9 @@ BEGIN
         AND Manager = 'Y';
 
         IF v_count > 1 THEN
-            RAISE_APPLICATION_ERROR(-20001, 'Errore: Esiste già un manager per il team');
+            RAISE_APPLICATION_ERROR(-20001, 'Error: Multiple managers in the same team');
         ELSE
-            DBMS_OUTPUT.PUT_LINE('Operazione eseguita con successo');
+            DBMS_OUTPUT.PUT_LINE('Operation Completed');
         END IF;
     END IF;
 END AFTER STATEMENT;
@@ -427,16 +562,12 @@ CREATE OR REPLACE TRIGGER trg_deactivate_old_contracts
 FOR INSERT ON Contract
 FOLLOWS trg_contract_type
 COMPOUND TRIGGER
-
-    -- Variabili locali per memorizzare Account e Facility
     v_account REF AccountTY;
     v_facility REF FacilityTY;
-    v_contract_id VARCHAR2(20); -- Memorizza ID del contratto appena inserito
-
-    -- Azione BEFORE EACH ROW per memorizzare i valori
+    v_contract_id VARCHAR2(20); 
+    v_status CHAR(1);
     BEFORE EACH ROW IS
     BEGIN
-        -- Salviamo Account, Facility e ID del contratto nella fase BEFORE
         v_account := :NEW.Account;
         v_facility := :NEW.Facility;
         v_contract_id := :NEW.ID;
@@ -445,31 +576,32 @@ COMPOUND TRIGGER
             IF ADD_MONTHS(:NEW.Start_Date, :NEW.Duration) < SYSDATE THEN
                 DBMS_OUTPUT.PUT_LINE('You are inserting an expired contract');
             ELSE
-                DBMS_OUTPUT.PUT_LINE('Errore di inserimento, il contratto verrà registrato come attivo');
+                DBMS_OUTPUT.PUT_LINE('Error: Contract is not active');
                 :NEW.Active := 'Y';
             END IF;
         END IF;
+        v_status := :NEW.Active;
     END BEFORE EACH ROW;
-    -- Azione AFTER STATEMENT per eseguire l'aggiornamento
     AFTER STATEMENT IS
     BEGIN
-        -- Una volta completato l'inserimento, disattiviamo i contratti precedenti
-        FOR rec IN (
-            SELECT ID
-            FROM Contract
-            WHERE Active = 'Y'
-            AND Account = v_account
-            AND Facility = v_facility
-            AND ID <> v_contract_id -- Escludiamo il contratto appena inserito
-        ) LOOP
-            UPDATE Contract
-            SET Active = 'N'
-            WHERE ID = rec.ID;
+        IF v_status='Y' THEN
+            FOR rec IN (
+                SELECT ID
+                FROM Contract
+                WHERE Active = 'Y'
+                AND Account = v_account
+                AND Facility = v_facility
+                AND ID <> v_contract_id
+            ) LOOP
+                UPDATE Contract
+                SET Active = 'N'
+                WHERE ID = rec.ID;
 
-            DBMS_OUTPUT.PUT_LINE('Disattivato il contratto ');
-        END LOOP;
+                DBMS_OUTPUT.PUT_LINE('Contract deactivated');
+            END LOOP;
 
-        DBMS_OUTPUT.PUT_LINE('Trigger trg_deactivate_old_contracts eseguito con successo.');
+            DBMS_OUTPUT.PUT_LINE('Trigger trg_deactivate_old_contracts executed');
+        END IF;
     END AFTER STATEMENT;
 
 END trg_deactivate_old_contracts;
@@ -486,21 +618,16 @@ DECLARE
     v_current_sum NUMBER;
     v_max_output NUMBER;
 BEGIN
-    -- Ottieni il nome della Facility associata al contratto
     IF INSERTING OR UPDATING THEN
         SELECT f.Name INTO v_facility_name FROM Facility f WHERE REF(f) = :NEW.Facility;
     ELSE
         SELECT f.Name INTO v_facility_name FROM Facility f WHERE REF(f) = :OLD.Facility;
     END IF;
-
-    -- Blocca la riga della Facility per evitare race conditions
     SELECT SumOutputEnergy, MaxOutputEnergy 
     INTO v_current_sum, v_max_output 
     FROM Facility 
     WHERE Name = v_facility_name 
     FOR UPDATE;
-
-    -- Gestione INSERT: aggiungi EnergyPlan a SumOutputEnergy
     IF INSERTING THEN
         IF v_current_sum + :NEW.EnergyPlan > v_max_output THEN
             RAISE_APPLICATION_ERROR(-20001, 'SumOutputEnergy supera MaxOutputEnergy per la Facility ' || v_facility_name);
@@ -509,14 +636,10 @@ BEGIN
             SET SumOutputEnergy = v_current_sum + :NEW.EnergyPlan 
             WHERE Name = v_facility_name;
         END IF;
-    
-    -- Gestione DELETE: sottrai EnergyPlan da SumOutputEnergy
     ELSIF DELETING THEN
         UPDATE Facility 
         SET SumOutputEnergy = v_current_sum - :OLD.EnergyPlan 
         WHERE Name = v_facility_name;
-    
-    -- Gestione UPDATE: sottrai solo se Active passa da Y a N
     ELSIF UPDATING THEN
         IF :OLD.Active = 'Y' AND :NEW.Active = 'N' THEN
             UPDATE Facility 
@@ -543,6 +666,29 @@ BEGIN
     END IF;
 END trg_efficiency_score;
 /
+
+
+CREATE OR REPLACE TRIGGER trg_customer_age
+AFTER INSERT OR UPDATE ON Customer
+FOR EACH ROW
+BEGIN
+    IF MONTHS_BETWEEN(SYSDATE, :NEW.DoB) < 18*12 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Error: Customer is a minor');
+    END IF;
+END;
+/
+
+CREATE OR REPLACE TRIGGER trg_employee_age
+AFTER INSERT OR UPDATE ON Employee
+FOR EACH ROW
+BEGIN
+    IF MONTHS_BETWEEN(SYSDATE, :NEW.DoB) < 18*12 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Error: Employee is a minor');
+    END IF;
+END;
+/
+
+
 SET SERVEROUTPUT OFF
 /
 BEGIN
@@ -554,7 +700,6 @@ BEGIN
     );
 END;
 /
-
 
 SET SERVEROUTPUT ON
 /
@@ -720,12 +865,97 @@ ContractTY(
 );
 
 
-SELECT COUNT(*) FROM Contract;
-SELECT COUNT(*) FROM Customer;
-SELECT COUNT(*) FROM Facility;
-SELECT COUNT(*) FROM EMPLOYEE;
-SELECT COUNT(*) FROM Team;
-SELECT COUNT(*) FROM Feedback; 
+-- for web application
+INSERT INTO TEAM
+VALUES (
+    TeamTY(
+        'TeamWeb',
+        'TeamNameWeb',
+        8
+    )
+);
 
 
-SELECT MAXOUTPUTENERGY, SUMOUTPUTENERGY, EfficiencyScore FROM Facility FETCH FIRST 10 ROWS ONLY;
+INSERT INTO FACILITY
+VALUES (
+FacilityTY(
+    'FacilityWeb', 
+    'LocationTest', 
+    'wind', 
+    100, 
+    10000000, 
+    0, 
+    (SELECT REF(t) FROM Team t WHERE t.Code = 'Team1')
+)
+);
+
+
+INSERT INTO CUSTOMER
+VALUES (
+CustomerTY
+(
+    'CustomerWeb', 
+    'NameWeb', 
+    'SurnameWeb', 
+    'ciao@gmail.com',
+    'Commercial',
+    TO_DATE('1985-01-01','YYYY-MM-DD')
+)
+);
+
+
+INSERT INTO Account
+VALUES (
+AccountTY(
+    'AccountWeb', 
+    (SELECT REF(c) FROM Customer c WHERE c.Code = 'CustomerWeb')
+)
+);
+
+
+SELECT * FROM CONTRACT WHERE ID = 'ContractWeb';
+
+
+SELECT * FROM CONTRACT WHERE ACCOUNT = (SELECT REF(a) FROM Account a WHERE a.Code = 'AccountWeb');
+
+
+
+INSERT INTO FACILITY
+VALUES (
+FacilityTY(
+    'FacilityWeb2', 
+    'LocationTest', 
+    'wind', 
+    100, 
+    10000000, 
+    0, 
+    NULL
+)
+);
+
+
+INSERT INTO TEAM
+VALUES (
+    TeamTY(
+        'TeamWeb2',
+        'TeamNameWeb2',
+        8
+    )
+);
+
+
+
+
+SELECT * FROM Customer WHERE Code = 'Gianfry';
+SELECT DEREF(e.Team).Code AS team_code
+              FROM Employee e
+             WHERE e.Manager = 'Y'
+             ORDER BY e.DoB ASC
+             FETCH FIRST 1 ROWS ONLY;
+
+
+ SELECT f.Name 
+                  FROM Facility f
+                 WHERE DEREF(f.Team).Code = 'Team24';
+
+

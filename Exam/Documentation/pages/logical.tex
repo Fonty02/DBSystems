@@ -13,13 +13,13 @@ Lets consider the volumes for a year
     Contract & E & 900.000 & Number of contracts. 100 facilities * 500 contracts per facility * 12 months * 1.5 contracts per account \\ \hline
     Customer & E & 300.000 & Number of customers.(ASSUMPTION) \\ \hline
     Account & E & 600.000 & Number of accounts. 300.000 customers * 2 accounts per customer on average\\ \hline
-    Team & E & 100 & Number of teams. (Given) \\ \hline
-    Employee & E & 500 & Number of employees. 5 employees per team * 100 teams (ASSUMPTION) \\ \hline
+    Team & E & 50 & Number of teams. (Given) \\ \hline
+    Employee & E & 250 & Number of employees. 5 employees per team * 100 teams (ASSUMPTION) \\ \hline
     Feedback & E & 600.000 & Number of feedbacks.\\ \hline
     Provides & R & 900.000 & Each contract is provided by a single facility \\ \hline
     Linked & R & 900.000 & On average each account has 1.5 contracts \\ \hline
     Has & R & 600.000 & Each customer 2 accounts on average \\ \hline
-    OverseenBy & R & 100 & Each facility is overseen by a single team \\ \hline
+    OverseenBy & R & 100 & Each facility is overseen by a single team. Each team oversees 2 facilities, on average \\ \hline
     Configuration & R & 500 & Each team constists of 5 employees on average \\ \hline
     Gives & R & 500.000 & Each feedback is given by a single account.Not all accounts give feedback  \\ \hline
     Evaluation & R & 500.000 & Each feedback is linked to a single team\\ \hline
@@ -85,14 +85,14 @@ Lets consider the volumes for a year
     Employee & E & 500 & R \\ \hline
     Configuration & R & 1 & R \\ \hline
     Team & E & 1 & R \\ \hline
-    OverseenBy & R & 1 & R \\ \hline
-    Facility & E & 1 & R \\ \hline
-    Provides & R & 9000 & R \\ \hline
-    Contract & E & 9000 & R \\ \hline
+    OverseenBy & R & 2 & R \\ \hline
+    Facility & E & 2 & R \\ \hline
+    Provides & R & 18000 & R \\ \hline
+    Contract & E & 18000 & R \\ \hline
     \end{tabularx}
     \caption{Access Table for Operation4}
 \end{table}
-\noindent Total Cost: (500+1+1+1+1+9000+9000)*0.03=555.12 per day
+\noindent Total Cost: (500+1+1+1+2+18000+18000)*0.03=1095.18 per day
 \newline
 \noindent In this case we don't have sumEnergyOutput in the schema as attribute of the facility, so we need to compute it every time. If we introduce it, the cost will be
 \begin{table}[H]
@@ -103,12 +103,12 @@ Lets consider the volumes for a year
     Employee & E & 500 & R \\ \hline
     Configuration & R & 1 & R \\ \hline
     Team & E & 1 & R \\ \hline
-    OverseenBy & R & 1 & R \\ \hline
-    Facility & E & 1 & R \\ \hline
+    OverseenBy & R & 2 & R \\ \hline
+    Facility & E & 2 & R \\ \hline
     \end{tabularx}
     \caption{Access Table for Operation4 with redundancy}
 \end{table}
-\noindent Total Cost: (500+1+1+1+1)*0.03=15.12 per day
+\noindent Total Cost: (500+1+1+2+2)*0.03=15.18 per day
 \newline
 \noindent But in this case we need to update it every time we add a new contract, so the total cost of \textbf{Operation2} will be:
 
@@ -131,8 +131,7 @@ Lets consider the volumes for a year
 \end{table}
 \noindent Total Cost: (2+2+1+2+2+1+2+9000+9000)*200=3.602.400 per day
 \newline
-\noindent So the total cost without redundancy is 3.602.000 + 555.12 = 3.602.555.12, while the total cost with redundancy is 3.602.400 + 15.12 = 3.602.415.12 per day.
-So we should keep the redundancy in this case. 
+\noindent So the total cost without redundancy is 3.602.000 + 1095.18 = 3.603.095.18, while the total cost with redundancy is 3.602.400 + 15.18 = 3.602.415.18 per day. So we should keep the redundancy in this case. 
 \newline
 \noindent \textbf{Operation5:} Print a ranked list of facilities based on their efficiency scores (10 per day)
 \begin{table}[H]

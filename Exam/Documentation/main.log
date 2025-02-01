@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  1 FEB 2025 11:45
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  1 FEB 2025 20:43
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/fonta/Desktop/Magistrale/Repo/DBSystems/Exam/Documentation/main
@@ -1364,7 +1364,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 (./pages/front.tex
-<images/uniba-logo.png, id=62, 869.2475pt x 289.08pt>
+<images/uniba-logo.png, id=94, 869.2475pt x 289.08pt>
 File: images/uniba-logo.png Graphic file (type png)
 <use images/uniba-logo.png>
 Package luatex.def Info: images/uniba-logo.png  used on input line 3.
@@ -1500,7 +1500,7 @@ Overfull \vbox (38.95323pt too high) has occurred while \output is active []
 [4]
 
 [5]
-<images/SkeletonSchema.png, id=112, 1284.8pt x 506.89375pt>
+<images/SkeletonSchema.png, id=152, 1284.8pt x 506.89375pt>
 File: images/SkeletonSchema.png Graphic file (type png)
 <use images/SkeletonSchema.png>
 Package luatex.def Info: images/SkeletonSchema.png  used on input line 131.
@@ -1517,16 +1517,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
-<images/ER.png, id=122, 1094.0875pt x 626.34pt>
+<images/ER.png, id=162, 1094.0875pt x 626.34pt>
 File: images/ER.png Graphic file (type png)
 <use images/ER.png>
 Package luatex.def Info: images/ER.png  used on input line 149.
 (luatex.def)             Requested size: 424.06033pt x 242.76158pt.
 
 
-[7<./images/SkeletonSchema.png>])
+[7<./images/SkeletonSchema.png>]
 
-[8<./images/ER.png>] (./pages/logical.tex
+[8<./images/ER.png>])
+
+[9] (./pages/logical.tex
 Underfull \hbox (badness 10000) in paragraph at lines 26--26
 []|\OT1/lmr/m/n/8 Num-ber of cu-sto-
  []
@@ -1553,7 +1555,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--41
 
 
 
-[9]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 42--60
 
  []
@@ -1570,73 +1572,238 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--94
 
 
 
-[10]
-
 [11]
 
 [12]
-<images/UML.png, id=164, 1536.74126pt x 908.39375pt>
-File: images/UML.png Graphic file (type png)
-<use images/UML.png>
-Package luatex.def Info: images/UML.png  used on input line 194.
-(luatex.def)             Requested size: 424.06033pt x 250.6615pt.
-)
 
 [13]
+<images/UML.png, id=208, 1537.745pt x 908.39375pt>
+File: images/UML.png Graphic file (type png)
+<use images/UML.png>
+Package luatex.def Info: images/UML.png  used on input line 193.
+(luatex.def)             Requested size: 424.06033pt x 250.50903pt.
+)
 
-[14<./images/UML.png>] (./pages/DW.tex
-<images/Fact1.png, id=180, 734.745pt x 1015.795pt>
-File: images/Fact1.png Graphic file (type png)
-<use images/Fact1.png>
-Package luatex.def Info: images/Fact1.png  used on input line 8.
-(luatex.def)             Requested size: 424.0671pt x 414.06068pt.
+[14]
+
+[15<./images/UML.png>] (./pages/Implementation.tex
+
+[16]
+LaTeX Font Info:    Trying to load font information for OML+lmr on input line 9
+9.
+ (C:/Users/fonta/AppData/Local/Programs/MiKTeX/tex/latex/lm/omllmr.fd
+File: omllmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9
+9.
+
+(C:/Users/fonta/AppData/Local/Programs/MiKTeX/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <12> not available
+(Font)              Font shape `OML/lmm/m/it' tried instead on input line 99.
 
 
-[15<./images/Fact1.png>]
-<images/Fact2.png, id=187, 733.74126pt x 1014.79124pt>
-File: images/Fact2.png Graphic file (type png)
-<use images/Fact2.png>
-Package luatex.def Info: images/Fact2.png  used on input line 22.
-(luatex.def)             Requested size: 424.06996pt x 414.06961pt.
+[17]
+
+[18]
+
+[19]
+LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 1
+92.
+ (C:/Users/fonta/AppData/Local/Programs/MiKTeX/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+192.
+
+(C:/Users/fonta/AppData/Local/Programs/MiKTeX/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 192.
 
 
-[16<./images/Fact2.png>])
+[20]
 
-[17] (./main.aux)
+[21]
+
+[22]
+
+[23]
+
+[24]
+
+[25]
+
+[26]
+
+[27]
+
+[28]
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 548--549
+[][][][] 
+ []
+
+
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 550--552
+[][][][] 
+ []
+
+
+
+[29]
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 569--570
+[][][][] 
+ []
+
+
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 571--572
+[][][][] 
+ []
+
+
+
+[30]
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 604--605
+[][][][] 
+ []
+
+
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 606--607
+[][][][] 
+ []
+
+
+
+[31]
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 641--642
+[][][][] 
+ []
+
+
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 643--644
+[][][][] 
+ []
+
+
+
+[32]
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 662--663
+[][][][] 
+ []
+
+
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 664--665
+[][][][] 
+ []
+
+)
+
+[33] (./pages/web.tex
+
+[34]
+
+[35]
+Overfull \hbox (18.9371pt too wide) in paragraph at lines 95--96
+[][] 
+ []
+
+
+Overfull \hbox (5.98706pt too wide) in paragraph at lines 96--97
+[][][][][] 
+ []
+
+
+Overfull \hbox (33.03702pt too wide) in paragraph at lines 96--97
+[][] 
+ []
+
+
+
+[36]
+
+[37]
+
+[38]
+
+[39]
+<images/homepage.png, id=1113, 1430.34375pt x 301.8778pt>
+File: images/homepage.png Graphic file (type png)
+<use images/homepage.png>
+Package luatex.def Info: images/homepage.png  used on input line 219.
+(luatex.def)             Requested size: 424.06033pt x 89.49998pt.
+<images/Op1.png, id=1114, 1434.86063pt x 621.82312pt>
+File: images/Op1.png Graphic file (type png)
+<use images/Op1.png>
+Package luatex.def Info: images/Op1.png  used on input line 225.
+(luatex.def)             Requested size: 424.06033pt x 183.76831pt.
+<images/Op2.png, id=1115, 1440.88312pt x 677.53125pt>
+File: images/Op2.png Graphic file (type png)
+<use images/Op2.png>
+Package luatex.def Info: images/Op2.png  used on input line 232.
+(luatex.def)             Requested size: 424.06033pt x 199.39442pt.
+
+
+[40<./images/homepage.png><./images/Op1.png>]
+<images/Op3.png, id=1132, 1434.86063pt x 392.21532pt>
+File: images/Op3.png Graphic file (type png)
+<use images/Op3.png>
+Package luatex.def Info: images/Op3.png  used on input line 239.
+(luatex.def)             Requested size: 424.06033pt x 115.91197pt.
+<images/Op4.png, id=1133, 1426.57968pt x 446.41782pt>
+File: images/Op4.png Graphic file (type png)
+<use images/Op4.png>
+Package luatex.def Info: images/Op4.png  used on input line 246.
+(luatex.def)             Requested size: 424.06033pt x 132.70026pt.
+<images/Op5.png, id=1134, 1432.60219pt x 700.86844pt>
+File: images/Op5.png Graphic file (type png)
+<use images/Op5.png>
+Package luatex.def Info: images/Op5.png  used on input line 253.
+(luatex.def)             Requested size: 424.06033pt x 207.46022pt.
+)
+
+[41<./images/Op2.png><./images/Op3.png><./images/Op4.png>]
+
+[42<./images/Op5.png>] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7CC0783661830DE2FB724E86E9A0F4E4;2031.
+(rerunfilecheck)             Checksum: 296F204412595803059F12BE8DFB3F95;2988.
 )
 
 Here is how much of LuaTeX's memory you used:
- 39210 strings out of 475518
- 100000,1977958 words of node,token memory allocated
+ 40712 strings out of 475518
+ 381552,1977958 words of node,token memory allocated
  614 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 14 attribute, 67 glue_spec
 , 9 attribute_list, 2 write nodes
-   avail lists: 1:1,2:2583,3:409,4:112,5:295,6:182,7:4844,8:62,9:1394,10:29,11:5
-73
- 61090 multiletter control sequences out of 65536+600000
- 66 fonts using 4155967 bytes
- 87i,11n,88p,783b,429s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/U
-sers/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users
-/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
-8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/lm/lmbx12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/lm/lmbx8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/lm/lmr12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
-m/lmr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
-mri12.pfb>
-Output written on main.pdf (18 pages, 1556224 bytes).
+   avail lists: 1:2,2:6167,3:410,4:416,5:8457,6:182,7:14037,8:62,9:17038,10:33,1
+1:851
+ 61721 multiletter control sequences out of 65536+600000
+ 69 fonts using 4342975 bytes
+ 87i,11n,88p,783b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{
+C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
+:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Use
+rs/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users/f
+onta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:
+/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmr12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmbx12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/lm/lmbx8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
+m/lmmi12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmr12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
+mr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri
+12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
+0.pfb>
+Output written on main.pdf (43 pages, 1793549 bytes).
 
-PDF statistics: 235 PDF objects out of 1000 (max. 8388607)
- 59 named destinations out of 1000 (max. 131072)
- 128 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1222 PDF objects out of 1440 (max. 8388607)
+ 892 named destinations out of 1000 (max. 131072)
+ 192 words of extra memory for PDF output out of 10000 (max. 100000000)
 

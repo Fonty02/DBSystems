@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" version="26.0.10">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="1434" dy="1172" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="989" dy="932" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -87,7 +87,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Rv9nNQW4Hy2pHnhk0odQ-69" value="(1, 1)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="Rv9nNQW4Hy2pHnhk0odQ-45" vertex="1" connectable="0">
+        <mxCell id="Rv9nNQW4Hy2pHnhk0odQ-69" value="(0, N)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="Rv9nNQW4Hy2pHnhk0odQ-45" vertex="1" connectable="0">
           <mxGeometry x="-0.6765" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -400,7 +400,7 @@
             <mxPoint x="650" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FTfOvMeQZkhhuj3rjYe9-48" value="(1,1)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="FTfOvMeQZkhhuj3rjYe9-46" vertex="1" connectable="0">
+        <mxCell id="FTfOvMeQZkhhuj3rjYe9-48" value="(0,1)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="FTfOvMeQZkhhuj3rjYe9-46" vertex="1" connectable="0">
           <mxGeometry x="-0.2848" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
