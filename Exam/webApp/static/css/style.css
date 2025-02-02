@@ -1,43 +1,97 @@
-/* static/css/style.css */
-
+/* Importazione del font Roboto */
 body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+    background: #f9f9f9;
     margin: 0;
     padding: 0;
 }
 
-header, footer {
-    background-color: #003366;
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #005f99, #003366);
     color: white;
-    padding: 1em;
-    text-align: center;
+    padding: 1em 0;
 }
 
-.container {
-    width: 80%;
+.header-container {
+    width: 90%;
     margin: auto;
-    background: white;
-    padding: 1em;
-    margin-top: 2em;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-h1, h2 {
-    color: #003366;
+.logo {
+    width: 80px;
+    height: auto;
+    margin-right: 1em;
+}
+
+header h1 {
+    flex-grow: 1;
+    font-size: 1.8em;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
+nav a:hover {
+    color: #ffcc00;
+}
+
+/* CONTAINER PRINCIPALE */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 2em auto;
+    background: white;
+    padding: 2em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* FORM STYLES */
+.form-container {
+    padding: 1em 2em;
+}
+
+.form-group {
+    margin-bottom: 1.2em;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.7em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* BOTTONI */
 .button-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 2em;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
 }
 
 .btn {
@@ -47,44 +101,20 @@ nav a {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin: 0.5em;
-    text-align: center;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
-form label {
-    display: block;
-    margin-top: 1em;
+.btn:hover {
+    background-color: #005f99;
 }
 
-form input, form select {
-    width: 100%;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    box-sizing: border-box;
-}
-
-form button.btn {
-    margin-top: 1.5em;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1em;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 0.8em;
-    text-align: center;
-}
-
+/* FLASH MESSAGES */
 .flashes {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
+    margin: 1em 0;
 }
 
 .flashes li {
@@ -106,4 +136,42 @@ th, td {
 .flashes li.warning {
     background-color: #fff3cd;
     color: #856404;
+}
+
+/* TABELLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 0.8em;
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    background: #003366 url("../images/background.jpg") no-repeat center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 1.2em 0;
+    margin-top: 2em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav {
+        margin-top: 1em;
+    }
 }

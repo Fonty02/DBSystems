@@ -6,9 +6,23 @@ Here we will discuss the physical design of the system, so the creation of index
 \subsection{Indexes for operations}
 
 \paragraph{Operation1} \leavevmode \newline
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Op1Index.png}
+    \caption{Operation1}
+\end{figure}
+
 Since the operation is a simple insert, it doesn't require any indexes to be created. The data will be inserted into the table as it is.
 
 \paragraph{Operation2} \leavevmode \newline
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Op2Index.png}
+    \caption{Operation2}
+\end{figure}
+
 Since the operation is a simple insert, it doesn't require any indexes to be created. The data will be inserted into the table as it is.
 
 \paragraph{Operation3} \leavevmode \newline
@@ -59,6 +73,7 @@ By using the autotrace we can see that here we are not using any index. Let's cr
 We can see that now we are using the Employee\_DoB\_Index index to fetch the first row (the Autotrace shows UNIQUE SCAN). The second part of the operation is a simple sselection. It uses Facility.Name with is already indexed.
 
 \paragraph{Operation5} \leavevmode \newline
+
 
 Operation five is a selection sorted by FacilityEfficiency. However, even with an index on that attribute, the Autotrace shows that the index is not used.
 

@@ -1,28 +1,27 @@
-<!-- templates/ranked_facilities.html -->
 {% extends "base.html" %}
-{% block title %}Ranked Facilities{% endblock %}
+{% block title %}Rank Facilities - GreenWorld Energy{% endblock %}
 {% block content %}
 <div class="container">
-    <h2>Ranked List of Facilities by Efficiency Score</h2>
+    <h2>Ranks of Facilities</h2>
     {% if facilities %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Facility Name</th>
-                    <th>Efficiency Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for facility in facilities %}
-                <tr>
-                    <td>{{ facility[0] }}</td>
-                    <td>{{ facility[1] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Facility Name</th>
+                <th>Efficiency Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for facility in facilities %}
+            <tr>
+                <td>{{ facility[0] }}</td>
+                <td>{{ facility[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
-        <p>No facilities found </p>
+    <p>There are no facilities to rank.</p>
     {% endif %}
 </div>
 {% endblock %}

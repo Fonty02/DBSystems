@@ -1,18 +1,19 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}WebApp Oracle{% endblock %}</title>
+    <title>{% block title %}WebApp Energy System{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Gestione Energy System</h1>
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a>
-        </nav>
+        <div class="header-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="GreenWorld Energy Logo" class="logo">
+            <h1>GreenWorld Energy</h1>
+        </div>
     </header>
+
     <main>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
@@ -25,8 +26,10 @@
         {% endwith %}
         {% block content %}{% endblock %}
     </main>
+
     <footer>
-        <p>&copy; 2025 Energy System</p>
+        <p>&copy; 2025 GreenWorld Energy</p>
+        <p>Developed by GreenWorld Energy</p>
     </footer>
 </body>
 </html>

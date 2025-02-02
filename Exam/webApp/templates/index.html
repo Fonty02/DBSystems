@@ -1,15 +1,14 @@
-<!-- templates/index.html -->
 {% extends "base.html" %}
-{% block title %}Home - Energy System{% endblock %}
+{% block title %}Home - GreenWorld Energy{% endblock %}
 {% block content %}
 <div class="container">
-    <h2>Operations</h2>
+    <h2>Main operations</h2>
     <div class="button-container">
-        <a href="{{ url_for('register_customer') }}" class="btn">Register New Customer</a>
-        <a href="{{ url_for('add_contract') }}" class="btn">Add New Energy Contract</a>
-        <a href="{{ url_for('assign_facility') }}" class="btn">Assign Facility to Team</a>
-        <a href="{{ url_for('view_facility_energy') }}" class="btn">View Facility Energy Output</a>
-        <a href="{{ url_for('ranked_facilities') }}" class="btn">Ranked Facilities</a>
+        <a href="{{ url_for('register_customer') }}" class="btn">Add New Customer</a>
+        <a href="{{ url_for('add_contract') }}" class="btn">Add New Contract</a>
+        <a href="{{ url_for('assign_facility') }}" class="btn">Assign Facility</a>
+        <a href="{{ url_for('view_facility_energy') }}" class="btn">View Facility Energy</a>
+        <a href="{{ url_for('ranked_facilities') }}" class="btn">Rank Facilities</a>
     </div>
 </div>
 {% endblock %}

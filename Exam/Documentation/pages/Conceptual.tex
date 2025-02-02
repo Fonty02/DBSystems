@@ -1,27 +1,26 @@
 \section{Conceptual Design}
 \subsection{Requirements}
-The requirements for the database are the following:
-\begin{table}[H]
+The requirements for the database are the following:\begin{table}[H]
     \renewcommand{\arraystretch}{1.3} % Adjust row height
     \begin{tabularx}{\textwidth}{|X|}
     \hline
-    \textbf{"GreenWorld Energy"} \\ \hline
+    \multicolumn{1}{|c|}{\textbf{"GreenWorld Energy"}} \\ \hline
     The company "GreenWorld Energy" operates decentralized renewable energy production facilities distributed 
-across regions. Each facility is characterized by a name, location, type of energy produced (e.g., solar, wind, 
-hydro), and maximum energy output capacity. The company also manages contracts with customers for energy 
-supply, categorized as residential or commercial, and offers flexible pricing models based on consumption. 
-Each customer has one or more accounts, each identified by a unique code. Every energy contract is linked to a 
-single customer account and includes details such as start date, duration, energy plan, and cost. Facilities are 
-overseen by management teams, each identified by a unique code, team name, and the number of projects managed. 
-Teams are evaluated based on performance metrics such as energy efficiency, uptime, and customer satisfaction. 
-Each team is represented by the main responsible employee and other employees identified by fiscal code, name, 
-surname, date of birth and date of hiring. Additionally, the company supports a feedback system allowing 
-customers to submit ratings and comments regarding service quality. Customers are classified into residential and 
-commercial types, each identified by a unique alphanumeric code, with associated contact details and energy 
-consumption history. \\ \hline
+    across regions. Each facility is characterized by a name, location, type of energy produced (e.g., solar, wind, 
+    hydro), and maximum energy output capacity. The company also manages contracts with customers for energy 
+    supply, categorized as residential or commercial, and offers flexible pricing models based on consumption. 
+    Each customer has one or more accounts, each identified by a unique code. Every energy contract is linked to a 
+    single customer account and includes details such as start date, duration, energy plan, and cost. Facilities are 
+    overseen by management teams, each identified by a unique code, team name, and the number of projects managed. 
+    Teams are evaluated based on performance metrics such as energy efficiency, uptime, and customer satisfaction. 
+    Each team is represented by the main responsible employee and other employees identified by fiscal code, name, 
+    surname, date of birth and date of hiring. Additionally, the company supports a feedback system allowing 
+    customers to submit ratings and comments regarding service quality. Customers are classified into residential and 
+    commercial types, each identified by a unique alphanumeric code, with associated contact details and energy 
+    consumption history. \\ \hline
     \end{tabularx}
     \caption{Requirements}
-    \end{table}
+\end{table}
 
 
 \subsection{Analysis}
@@ -33,8 +32,8 @@ consumption history. \\ \hline
     \hline
     \textbf{Term}& \textbf{Description}  & \textbf{Connections}    & \textbf{Synonyms}     \\ \hline
     Region      & Area where the facilities are located. & Facility     & Location \\ \hline
-    Facility     & Energy production facility. It emits energy for customers      & Contract,Teams,Region         &\\ \hline
-    Contract     & Energy supply contract. It describes the energy plan. It can be residential or commercial & Account, Facility     & Projects        \\ \hline
+    Facility     & Energy production facility. It emits energy for customers      & Contract,Teams,Region         & Projects\\ \hline
+    Contract     & Energy supply contract. It describes the energy plan. It can be residential or commercial & Account, Facility     &         \\ \hline
     Customer     & Customer of GreenWorld Energy. It can be residential or commercial       & Account    &        \\ \hline
     Account      & Customer account. It associated with only one account and one contract & Contract, Customer, Feedback     &        \\ \hline
     Feedback     & Customer feedback. Used to give a score to each team       & Account,Team     &         Ratings, customer satisfaction \\\hline

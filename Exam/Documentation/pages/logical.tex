@@ -182,7 +182,7 @@ Contract & E & 900.000 & R \\ \hline
 
 \subsubsection{Redundancies and Generalization}
 \begin{itemize}
-    \item \textbf{Redundancies:} The number of contracts handled by a team is not stored in the schema, as it can be calculated by counting the number of contracts related to the facility managed by the team. The score of the team can be derived by the following formula: $score = \frac{energy\_efficiency + uptime + AVG(customer\_score)}{3}$ and is not stored in the schema to avoid redundancy. Due to the previous analysis, the redundancy of the efficiency score and sumEngergyOutput in the facility are kept in the schema
+    \item \textbf{Redundancies:} The number of facilities managed by a team is not stored in the schema, as it can be calculated by counting the number of facilities managed by the team. The score of the team can be derived by the following formula: $score = \frac{energy\_efficiency + uptime + AVG(customer\_score)}{3}$ and is not stored in the schema to avoid redundancy. Due to the previous analysis, the redundancy of the efficiency score and sumEngergyOutput in the facility are kept in the schema
     \item \textbf{Generalization:} The schema doesn't contain any generalization since there aren't different operations for theme. There is a \textbf{type} attribute in the \textbf{Customer} and \textbf{Contract} entities so that the business rule related to the type of contract can be enforced.
 \end{itemize}
 
