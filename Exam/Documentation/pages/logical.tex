@@ -82,25 +82,26 @@ Lets consider the volumes for a year
     \begin{tabularx}{\textwidth}{|X|X|X|X|}
     \hline
     \textbf{Concept}& \textbf{Type}  & \textbf{Access}    & \textbf{Type}     \\ \hline
-    Employee & E & 500 & R \\ \hline
+    Employee & E & 250 & R \\ \hline
     Configuration & R & 1 & R \\ \hline
     Team & E & 1 & R \\ \hline
     OverseenBy & R & 2 & R \\ \hline
     Facility & E & 2 & R \\ \hline
-    Provides & R & 18000 & R \\ \hline
-    Contract & E & 18000 & R \\ \hline
+    Provides & R & 9000 & R \\ \hline
+    Contract & E & 9000 & R \\ \hline
     \end{tabularx}
     \caption{Access Table for Operation4}
 \end{table}
-\noindent Total Cost: (500+1+1+1+2+18000+18000)*0.03=1095.18 per day
+\noindent Total Cost: (250+1+1+1+2+9000+9000)*0.03=547.65 per day
 \newline
-\noindent In this case we don't have sumEnergyOutput in the schema as attribute of the facility, so we need to compute it every time. If we introduce it, the cost will be
+\noindent Each team oversees, on average, twow facilities. We need to choose only one of them, which provides on average 9000 contracts.
+In this case we don't have sumEnergyOutput in the schema as attribute of the facility, so we need to compute it every time. If we introduce it, the cost will be
 \begin{table}[H]
     \renewcommand{\arraystretch}{1.3} % Adjust row height
     \begin{tabularx}{\textwidth}{|X|X|X|X|}
     \hline
     \textbf{Concept}& \textbf{Type}  & \textbf{Access}    & \textbf{Type}     \\ \hline
-    Employee & E & 500 & R \\ \hline
+    Employee & E & 250 & R \\ \hline
     Configuration & R & 1 & R \\ \hline
     Team & E & 1 & R \\ \hline
     OverseenBy & R & 2 & R \\ \hline
@@ -108,7 +109,7 @@ Lets consider the volumes for a year
     \end{tabularx}
     \caption{Access Table for Operation4 with redundancy}
 \end{table}
-\noindent Total Cost: (500+1+1+2+2)*0.03=15.18 per day
+\noindent Total Cost: (250+1+1+2+2)*0.03=7.68 per day
 \newline
 \noindent But in this case we need to update it every time we add a new contract, so the total cost of \textbf{Operation2} will be:
 
@@ -131,7 +132,7 @@ Lets consider the volumes for a year
 \end{table}
 \noindent Total Cost: (2+2+1+2+2+1+2+9000+9000)*200=3.602.400 per day
 \newline
-\noindent So the total cost without redundancy is 3.602.000 + 1095.18 = 3.603.095.18, while the total cost with redundancy is 3.602.400 + 15.18 = 3.602.415.18 per day. So we should keep the redundancy in this case. 
+\noindent So the total cost without redundancy is 3.602.000 +547.65 = 3.602.547.65, while the total cost with redundancy is 3.602.400 + 7.68 = 3.602.407.68 per day. So we should keep the redundancy in this case. 
 \newline
 \noindent \textbf{Operation5:} Print a ranked list of facilities based on their efficiency scores (10 per day)
 \begin{table}[H]
