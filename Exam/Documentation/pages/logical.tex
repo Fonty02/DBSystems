@@ -13,8 +13,8 @@ Lets consider the volumes for a year
     Contract & E & 900.000 & Number of contracts. 100 facilities * 500 contracts per facility * 12 months * 1.5 contracts per account \\ \hline
     Customer & E & 300.000 & Number of customers.(ASSUMPTION) \\ \hline
     Account & E & 600.000 & Number of accounts. 300.000 customers * 2 accounts per customer on average\\ \hline
-    Team & E & 50 & Number of teams. (Given) \\ \hline
-    Employee & E & 250 & Number of employees. 5 employees per team * 100 teams (ASSUMPTION) \\ \hline
+    Team & E & 50 & Number of teams. (ASSUMPTION) \\ \hline
+    Employee & E & 250 & Number of employees. 5 employees per team * 50 teams (ASSUMPTION) \\ \hline
     Feedback & E & 600.000 & Number of feedbacks.\\ \hline
     Provides & R & 900.000 & Each contract is provided by a single facility \\ \hline
     Linked & R & 900.000 & On average each account has 1.5 contracts \\ \hline
@@ -183,7 +183,7 @@ Contract & E & 900.000 & R \\ \hline
 \subsubsection{Redundancies and Generalization}
 \begin{itemize}
     \item \textbf{Redundancies:} The number of facilities managed by a team is not stored in the schema, as it can be calculated by counting the number of facilities managed by the team. The score of the team can be derived by the following formula: $score = \frac{energy\_efficiency + uptime + AVG(customer\_score)}{3}$ and is not stored in the schema to avoid redundancy. Due to the previous analysis, the redundancy of the efficiency score and sumEngergyOutput in the facility are kept in the schema
-    \item \textbf{Generalization:} The schema doesn't contain any generalization since there aren't different operations for theme. There is a \textbf{type} attribute in the \textbf{Customer} and \textbf{Contract} entities so that the business rule related to the type of contract can be enforced.
+    \item \textbf{Generalization:} The schema doesn't contain any generalization since there aren't different operations for them. There is a \textbf{type} attribute in the \textbf{Customer} and \textbf{Contract} entities so that the business rule related to the type of contract can be enforced.
 \end{itemize}
 
 

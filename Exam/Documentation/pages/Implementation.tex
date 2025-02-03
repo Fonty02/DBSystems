@@ -149,6 +149,7 @@ We can see that simple constraints are handled with \textbf{check}
         ID PRIMARY KEY,
         CONSTRAINT chk_contract_type CHECK (Type IN (''Commercial'', ''Residential'')),
         CONSTRAINT chk_energy_plan CHECK (EnergyPlan IN (2500, 4500, 10000)),
+        CONSTRAINT chk_cost CHECK (Cost IN (2500,4500,10000)),
         CONSTRAINT chk_active CHECK (Active IN (''Y'', ''N'')),
         CONSTRAINT chk_cost CHECK (Cost >= 0),
         CONSTRAINT chk_duration CHECK (Duration >= 1),
@@ -298,9 +299,11 @@ We can see that simple constraints are handled with \textbf{check}
                 v_duration NUMBER;
                 v_end_date DATE;
                 v_active CHAR(1);
+                v_energy_plan NUMBER;
+                v_cost NUMBER;
             BEGIN
                 v_account_code := 'Account' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, p_num_accounts)));
-    
+
                 SELECT c.Type 
                 INTO v_customer_type
                 FROM Account a
@@ -314,18 +317,29 @@ We can see that simple constraints are handled with \textbf{check}
                 ELSE
                     v_active := 'N';
                 END IF;
+
+                v_energy_plan := CASE MOD(i, 3)
+                    WHEN 0 THEN 2500
+                    WHEN 1 THEN 4500
+                    WHEN 2 THEN 10000
+                END;
+                IF v_energy_plan = 2500 THEN
+                    v_cost := 500;
+                ELSIF v_energy_plan = 4500 THEN
+                    v_cost := 750;
+                ELSE
+                    v_cost := 1000;
+                END IF;
+                
+
                 INSERT INTO Contract VALUES (
                     ContractTY(
                         'Contract' || TO_CHAR(i),
                         v_active,  
                         v_customer_type, 
                         v_start_date,
-                        DBMS_RANDOM.VALUE(100, 1000),
-                        CASE MOD(i, 3)
-                            WHEN 0 THEN 2500
-                            WHEN 1 THEN 4500
-                            WHEN 2 THEN 10000
-                        END,
+                        v_cost,
+                        v_energy_plan,
                         v_duration, 
                         (SELECT REF(a) FROM Account a WHERE a.Code = v_account_code),
                         (SELECT REF(f) FROM Facility f WHERE f.Name = 'Facility' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, 100))))
@@ -541,6 +555,31 @@ END;
 
 These two triggers are used to check if the age of the customer or the employee is less than 18 years old. If it is, it raises an error, otherwise it allows the operation.
 
+\begin{lstlisting}
+    CREATE OR REPLACE TRIGGER trg_contract_cost
+BEFORE INSERT OR UPDATE ON Contract
+FOR EACH ROW
+BEGIN
+    IF UPDATING THEN
+        IF (:NEW.EnergyPlan <> :OLD.EnergyPlan) OR (:NEW.Cost <> :OLD.Cost) THEN
+            RAISE_APPLICATION_ERROR(-20003, 'Error: Energy plan and cost cannot be changed');
+        END IF;
+    END IF;
+
+    IF INSERTING THEN
+        IF :NEW.EnergyPlan = 2500 THEN
+            :NEW.Cost := 500;
+        ELSIF :NEW.EnergyPlan = 4500 THEN
+            :NEW.Cost := 750;
+        ELSE
+            :NEW.Cost := 1000;
+        END IF;
+    END IF;
+END;
+\end{lstlisting}
+
+This trigger is used to check if the energy plan and the cost of the contract are changed. If they are, it raises an error, otherwise it allows the operation. It also sets the cost of the contract based on the energy plan when a new contract is inserted.
+
 
 \subsection{Operations}
 
@@ -573,13 +612,20 @@ These two triggers are used to check if the age of the customer or the employee 
         p_contract_id    IN VARCHAR2,
         p_contract_type  IN VARCHAR2,  -- 'Commercial' o 'Residential'
         p_start_date     IN DATE,
-        p_cost           IN NUMBER,
         p_energy_plan    IN NUMBER,    -- 2500, 4500 o 10000
         p_duration       IN NUMBER,    
         p_account_code   IN VARCHAR2,
         p_facility_name  IN VARCHAR2
     ) AS
+        p_cost NUMBER;
     BEGIN
+        IF p_energy_plan = 2500 THEN
+            p_cost := 500;
+        ELSIF p_energy_plan = 4500 THEN
+            p_cost := 750;
+        ELSE
+            p_cost := 1000;
+        END IF;
         INSERT INTO Contract
         VALUES (
             ContractTY(
@@ -599,7 +645,8 @@ These two triggers are used to check if the age of the customer or the employee 
         WHEN OTHERS THEN
            RAISE_APPLICATION_ERROR(-20011, 'Errore in proc_add_contract: ' || SQLERRM);
     END;
-    /
+/
+
     
     --------------------------------------------------------------------
     -- Procedure 3: Assign a facility to a team

@@ -1,18 +1,3 @@
-
-DROP PROCEDURE DropTypes;
-DROP PROCEDURE DropTables;
-DROP PROCEDURE CreateTypes;
-DROP PROCEDURE CreateTables;
-DROP PROCEDURE SchemaCreation;
-DROP PROCEDURE PopulateDatabase;
-DROP PROCEDURE proc_register_customer;
-DROP PROCEDURE proc_add_contract;
-DROP PROCEDURE proc_assign_facility;
-DROP FUNCTION func_get_facility_energy;
-DROP PROCEDURE proc_get_ranked_facilities;
-
-
-
 CREATE OR REPLACE Procedure DropTypes IS
 BEGIN
     EXECUTE IMMEDIATE 'DROP TYPE TeamTY FORCE';
@@ -161,7 +146,7 @@ BEGIN
         CONSTRAINT chk_contract_type CHECK (Type IN (''Commercial'', ''Residential'')),
         CONSTRAINT chk_energy_plan CHECK (EnergyPlan IN (2500, 4500, 10000)),
         CONSTRAINT chk_active CHECK (Active IN (''Y'', ''N'')),
-        CONSTRAINT chk_cost CHECK (Cost >= 0),
+        CONSTRAINT chk_cost CHECK (Cost IN (500, 750, 1000)),
         CONSTRAINT chk_duration CHECK (Duration >= 1),
         Start_Date NOT NULL,
         Cost NOT NULL,
@@ -191,6 +176,8 @@ BEGIN
      CreateTypes;
      CreateTables;
 END;
+
+
 /
 
 
@@ -314,6 +301,8 @@ BEGIN
             v_duration NUMBER;
             v_end_date DATE;
             v_active CHAR(1);
+            v_energy_plan NUMBER;
+            v_cost NUMBER;
         BEGIN
             v_account_code := 'Account' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, p_num_accounts)));
 
@@ -330,18 +319,29 @@ BEGIN
             ELSE
                 v_active := 'N';
             END IF;
+
+            v_energy_plan := CASE MOD(i, 3)
+                WHEN 0 THEN 2500
+                WHEN 1 THEN 4500
+                WHEN 2 THEN 10000
+            END;
+            IF v_energy_plan = 2500 THEN
+                v_cost := 500;
+            ELSIF v_energy_plan = 4500 THEN
+                v_cost := 750;
+            ELSE
+                v_cost := 1000;
+            END IF;
+            
+
             INSERT INTO Contract VALUES (
                 ContractTY(
                     'Contract' || TO_CHAR(i),
                     v_active,  
                     v_customer_type, 
                     v_start_date,
-                    DBMS_RANDOM.VALUE(100, 1000),
-                    CASE MOD(i, 3)
-                        WHEN 0 THEN 2500
-                        WHEN 1 THEN 4500
-                        WHEN 2 THEN 10000
-                    END,
+                    v_cost,
+                    v_energy_plan,
                     v_duration, 
                     (SELECT REF(a) FROM Account a WHERE a.Code = v_account_code),
                     (SELECT REF(f) FROM Facility f WHERE f.Name = 'Facility' || TO_CHAR(ROUND(DBMS_RANDOM.VALUE(1, 100))))
@@ -400,13 +400,20 @@ CREATE OR REPLACE PROCEDURE proc_add_contract (
     p_contract_id    IN VARCHAR2,
     p_contract_type  IN VARCHAR2,  -- 'Commercial' o 'Residential'
     p_start_date     IN DATE,
-    p_cost           IN NUMBER,
     p_energy_plan    IN NUMBER,    -- 2500, 4500 o 10000
     p_duration       IN NUMBER,    
     p_account_code   IN VARCHAR2,
     p_facility_name  IN VARCHAR2
 ) AS
+    p_cost NUMBER;
 BEGIN
+    IF p_energy_plan = 2500 THEN
+        p_cost := 500;
+    ELSIF p_energy_plan = 4500 THEN
+        p_cost := 750;
+    ELSE
+        p_cost := 1000;
+    END IF;
     INSERT INTO Contract
     VALUES (
         ContractTY(
@@ -544,11 +551,10 @@ CREATE OR REPLACE TRIGGER trg_contract_type
 DECLARE
      v_customer_type VARCHAR2(20);
 BEGIN
-     SELECT DEREF(a.Customer).Type
+    SELECT DEREF(a.Customer).Type
          INTO v_customer_type
          FROM Account a
          WHERE a.Code = (DEREF(:NEW.Account)).Code;
-
      IF :NEW.Type = v_customer_type THEN
             DBMS_OUTPUT.PUT_LINE('Operation Completed');
      ELSE
@@ -690,6 +696,29 @@ END;
 /
 
 
+CREATE OR REPLACE TRIGGER trg_contract_cost
+BEFORE INSERT OR UPDATE ON Contract
+FOR EACH ROW
+BEGIN
+    IF UPDATING THEN
+        IF (:NEW.EnergyPlan <> :OLD.EnergyPlan) OR (:NEW.Cost <> :OLD.Cost) THEN
+            RAISE_APPLICATION_ERROR(-20003, 'Error: Energy plan and cost cannot be changed');
+        END IF;
+    END IF;
+
+    IF INSERTING THEN
+        IF :NEW.EnergyPlan = 2500 THEN
+            :NEW.Cost := 500;
+        ELSIF :NEW.EnergyPlan = 4500 THEN
+            :NEW.Cost := 750;
+        ELSE
+            :NEW.Cost := 1000;
+        END IF;
+    END IF;
+END;
+/
+
+
 SET SERVEROUTPUT OFF
 /
 BEGIN
@@ -764,7 +793,8 @@ ContractTY(
 )
 );
 
---test trigger for deactivateOldContracts
+
+--test trigger for deactivateOldContracts and check cost
 
 INSERT INTO Facility VALUES (
     FacilityTY(
@@ -778,6 +808,29 @@ INSERT INTO Facility VALUES (
     )
 );
 
+INSERT INTO CUSTOMER
+VALUES (
+CustomerTY
+(
+    'CustomerTest20', 
+    'NameTest', 
+    'SurnameTest', 
+    'das@gmail.com',
+    'Commercial',
+    TO_DATE('1985-01-01','YYYY-MM-DD')
+)
+);
+
+INSERT INTO Account
+VALUES (
+AccountTY(
+    'AccountTest20', 
+    (SELECT REF(c) FROM Customer c WHERE c.Code = 'CustomerTest20')
+)
+);
+
+
+
 INSERT INTO Contract
 VALUES (
 ContractTY(
@@ -788,12 +841,13 @@ ContractTY(
     100, 
     2500, 
     1, 
-    (SELECT REF(a) FROM Account a WHERE a.Code = 'Account1'), 
+    (SELECT REF(a) FROM Account a WHERE a.Code = 'AccountTest20'), 
     (SELECT REF(f) FROM Facility f WHERE f.Name = 'FacilityTest2')
 )
 );
 
-SELECT Contract.ID, Contract.ACTIVE FROM Contract WHERE Facility=(SELECT REF(f) FROM Facility f WHERE f.Name = 'FacilityTest2');
+
+SELECT Contract.ID, Contract.ACTIVE, Contract.Cost, Contract.EnergyPlan FROM Contract WHERE Facility=(SELECT REF(f) FROM Facility f WHERE f.Name = 'FacilityTest2');
 
 INSERT INTO Contract
 VALUES (
@@ -805,12 +859,13 @@ ContractTY(
     100, 
     2500, 
     1, 
-    (SELECT REF(a) FROM Account a WHERE a.Code = 'Account1'), 
+    (SELECT REF(a) FROM Account a WHERE a.Code = 'AccountTest20'), 
     (SELECT REF(f) FROM Facility f WHERE f.Name = 'FacilityTest2')
 )
 );
 
 SELECT Contract.ID, Contract.ACTIVE FROM Contract WHERE Facility=(SELECT REF(f) FROM Facility f WHERE f.Name = 'FacilityTest2');
+
 
 /
 --test trigger for contractType
@@ -960,4 +1015,7 @@ SELECT DEREF(e.Team).Code AS team_code
                  WHERE DEREF(f.Team).Code = 'Team24';
 
 
+
+
+SELECT * FROM CONTRACT WHERE ID = 'ContractWeb';
 

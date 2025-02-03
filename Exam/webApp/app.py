@@ -65,7 +65,6 @@ def add_contract():
         contract_id = request.form.get('contract_id')
         contract_type = request.form.get('contract_type')
         start_date_str = request.form.get('start_date')
-        cost = float(request.form.get('cost'))
         energy_plan = float(request.form.get('energy_plan'))
         duration = float(request.form.get('duration'))
         account_code = request.form.get('account_code')
@@ -84,7 +83,7 @@ def add_contract():
             cur = conn.cursor()
            
             cur.callproc("proc_add_contract", [contract_id, contract_type,
-                                                 start_date, cost, energy_plan, duration,
+                                                 start_date, energy_plan, duration,
                                                  account_code, facility_name])
             conn.commit()
             flash("Contract added successfully", "success")

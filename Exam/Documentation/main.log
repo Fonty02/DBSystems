@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  2 FEB 2025 16:07
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  3 FEB 2025 16:04
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/fonta/Desktop/Magistrale/Repo/DBSystems/Exam/Documentation/main
@@ -1577,11 +1577,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--94
 [12]
 
 [13]
-<images/UML.png, id=218, 1537.745pt x 908.39375pt>
+<images/UML.png, id=218, 1536.74126pt x 908.39375pt>
 File: images/UML.png Graphic file (type png)
 <use images/UML.png>
 Package luatex.def Info: images/UML.png  used on input line 194.
-(luatex.def)             Requested size: 424.06033pt x 250.50903pt.
+(luatex.def)             Requested size: 424.06033pt x 250.6615pt.
 )
 
 [14]
@@ -1610,18 +1610,18 @@ LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <12> not available
 
 [19]
 LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 1
-92.
+93.
  (C:/Users/fonta/AppData/Local/Programs/MiKTeX/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-192.
+193.
 
 (C:/Users/fonta/AppData/Local/Programs/MiKTeX/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 192.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 193.
 
 
 [20]
@@ -1641,71 +1641,73 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
 [27]
 
 [28]
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 548--549
-[][][][] 
- []
-
-
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 550--552
-[][][][] 
- []
-
-
 
 [29]
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 569--570
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 587--588
 [][][][] 
  []
 
 
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 571--572
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 589--591
 [][][][] 
  []
 
 
 
 [30]
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 604--605
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 608--609
 [][][][] 
  []
 
 
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 606--607
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 610--611
 [][][][] 
  []
 
 
 
 [31]
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 641--642
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 651--652
 [][][][] 
  []
 
 
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 643--644
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 653--654
 [][][][] 
  []
 
 
 
 [32]
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 662--663
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 688--689
 [][][][] 
  []
 
 
-Overfull \hbox (89.43668pt too wide) in paragraph at lines 664--665
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 690--691
+[][][][] 
+ []
+
+
+
+[33]
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 709--710
+[][][][] 
+ []
+
+
+Overfull \hbox (89.43668pt too wide) in paragraph at lines 711--712
 [][][][] 
  []
 
 )
 
-[33] (./pages/phys.tex
+[34] (./pages/phys.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-<images/Op1Index.png, id=901, 1141.26375pt x 54.2025pt>
+<images/Op1Index.png, id=948, 1141.26375pt x 54.2025pt>
 File: images/Op1Index.png Graphic file (type png)
 <use images/Op1Index.png>
 Package luatex.def Info: images/Op1Index.png  used on input line 12.
@@ -1715,34 +1717,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--19
 
  []
 
-<images/Op2Index.png, id=902, 1138.2525pt x 145.29282pt>
+<images/Op2Index.png, id=949, 1138.2525pt x 145.29282pt>
 File: images/Op2Index.png Graphic file (type png)
 <use images/Op2Index.png>
 Package luatex.def Info: images/Op2Index.png  used on input line 22.
 (luatex.def)             Requested size: 424.06033pt x 54.12994pt.
-<images/FacilityName.png, id=903, 1142.76938pt x 85.06781pt>
+<images/FacilityName.png, id=950, 1142.76938pt x 85.06781pt>
 File: images/FacilityName.png Graphic file (type png)
 <use images/FacilityName.png>
 Package luatex.def Info: images/FacilityName.png  used on input line 33.
 (luatex.def)             Requested size: 424.06033pt x 31.56674pt.
-<images/TeamCode.png, id=904, 1135.99406pt x 84.315pt>
+<images/TeamCode.png, id=951, 1135.99406pt x 84.315pt>
 File: images/TeamCode.png Graphic file (type png)
 <use images/TeamCode.png>
 Package luatex.def Info: images/TeamCode.png  used on input line 39.
 (luatex.def)             Requested size: 424.06033pt x 31.47394pt.
 
 
-[34<./images/Op1Index.png><./images/Op2Index.png><./images/FacilityName.png>]
+[35<./images/Op1Index.png><./images/Op2Index.png><./images/FacilityName.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
-<images/OldManNOIndex.png, id=918, 1147.28625pt x 197.98969pt>
+<images/OldManNOIndex.png, id=965, 1147.28625pt x 197.98969pt>
 File: images/OldManNOIndex.png Graphic file (type png)
 <use images/OldManNOIndex.png>
 Package luatex.def Info: images/OldManNOIndex.png  used on input line 57.
 (luatex.def)             Requested size: 424.06033pt x 73.1795pt.
-<images/OldManWithIndex.png, id=919, 1148.03906pt x 223.58531pt>
+<images/OldManWithIndex.png, id=966, 1148.03906pt x 223.58531pt>
 File: images/OldManWithIndex.png Graphic file (type png)
 <use images/OldManWithIndex.png>
 Package luatex.def Info: images/OldManWithIndex.png  used on input line 69.
@@ -1754,81 +1756,81 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
 
 
-[35<./images/TeamCode.png><./images/OldManNOIndex.png><./images/OldManWithIndex.
+[36<./images/TeamCode.png><./images/OldManNOIndex.png><./images/OldManWithIndex.
 png>]
-<images/EffScore.png, id=939, 1142.01656pt x 109.1578pt>
+<images/EffScore.png, id=986, 1142.01656pt x 109.1578pt>
 File: images/EffScore.png Graphic file (type png)
 <use images/EffScore.png>
 Package luatex.def Info: images/EffScore.png  used on input line 82.
 (luatex.def)             Requested size: 424.06033pt x 40.53265pt.
 )
 
-[36<./images/EffScore.png>] (./pages/web.tex
-
-[37]
+[37<./images/EffScore.png>] (./pages/web.tex
 
 [38]
-Overfull \hbox (18.9371pt too wide) in paragraph at lines 95--96
+
+[39]
+Overfull \hbox (18.9371pt too wide) in paragraph at lines 94--95
 [][] 
  []
 
 
-Overfull \hbox (5.98706pt too wide) in paragraph at lines 96--97
+Overfull \hbox (5.98706pt too wide) in paragraph at lines 95--96
 [][][][][] 
  []
 
 
-Overfull \hbox (33.03702pt too wide) in paragraph at lines 96--97
+Overfull \hbox (33.03702pt too wide) in paragraph at lines 95--96
 [][] 
  []
 
 
-
-[39]
 
 [40]
 
 [41]
 
 [42]
-<images/homepage.png, id=1170, 1431.09656pt x 272.51813pt>
+
+[43]
+<images/homepage.png, id=1216, 1431.09656pt x 272.51813pt>
 File: images/homepage.png Graphic file (type png)
 <use images/homepage.png>
-Package luatex.def Info: images/homepage.png  used on input line 219.
+Package luatex.def Info: images/homepage.png  used on input line 218.
 (luatex.def)             Requested size: 424.06033pt x 80.74976pt.
-<images/Op1.png, id=1171, 1440.88312pt x 552.56438pt>
+<images/Op1.png, id=1217, 1440.88312pt x 552.56438pt>
 File: images/Op1.png Graphic file (type png)
 <use images/Op1.png>
-Package luatex.def Info: images/Op1.png  used on input line 225.
+Package luatex.def Info: images/Op1.png  used on input line 224.
 (luatex.def)             Requested size: 424.06033pt x 162.61722pt.
-<images/Op2.png, id=1172, 1438.6247pt x 651.18282pt>
+<images/Op2.png, id=1218, 1431.09656pt x 599.23875pt>
 File: images/Op2.png Graphic file (type png)
 <use images/Op2.png>
-Package luatex.def Info: images/Op2.png  used on input line 232.
-(luatex.def)             Requested size: 424.06033pt x 191.94821pt.
+Package luatex.def Info: images/Op2.png  used on input line 231.
+(luatex.def)             Requested size: 424.06033pt x 177.56024pt.
 
 
-[43<./images/homepage.png><./images/Op1.png>]
-<images/Op3.png, id=1188, 1434.86063pt x 356.0803pt>
+[44<./images/homepage.png><./images/Op1.png>]
+<images/Op3.png, id=1234, 1434.86063pt x 356.0803pt>
 File: images/Op3.png Graphic file (type png)
 <use images/Op3.png>
-Package luatex.def Info: images/Op3.png  used on input line 239.
+Package luatex.def Info: images/Op3.png  used on input line 238.
 (luatex.def)             Requested size: 424.06033pt x 105.23294pt.
-<images/Op4.png, id=1189, 1438.6247pt x 418.56375pt>
+<images/Op4.png, id=1235, 1438.6247pt x 418.56375pt>
 File: images/Op4.png Graphic file (type png)
 <use images/Op4.png>
-Package luatex.def Info: images/Op4.png  used on input line 246.
+Package luatex.def Info: images/Op4.png  used on input line 245.
 (luatex.def)             Requested size: 424.06033pt x 123.37943pt.
-<images/Op5.png, id=1190, 1425.07407pt x 703.87968pt>
+<images/Op5.png, id=1236, 1425.07407pt x 703.87968pt>
 File: images/Op5.png Graphic file (type png)
 <use images/Op5.png>
-Package luatex.def Info: images/Op5.png  used on input line 253.
+Package luatex.def Info: images/Op5.png  used on input line 252.
 (luatex.def)             Requested size: 424.06033pt x 209.44708pt.
 )
 
-[44<./images/Op2.png><./images/Op3.png><./images/Op4.png>]
+[45<./images/Op2.png><./images/Op3.png><./images/Op4.png>]
 
-[45<./images/Op5.png>] (./main.aux)
+[46<./images/Op5.png>] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
@@ -1838,16 +1840,16 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 40820 strings out of 475518
+ 40866 strings out of 475518
  381528,1977958 words of node,token memory allocated
  614 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 14 attribute, 67 glue_spec
 , 9 attribute_list, 2 write nodes
-   avail lists: 1:1,2:6167,3:410,4:417,5:8457,6:183,7:14111,8:62,9:17038,10:33,1
+   avail lists: 1:1,2:6167,3:410,4:437,5:8459,6:184,7:14388,8:62,9:17042,10:33,1
 1:851
- 61777 multiletter control sequences out of 65536+600000
+ 61780 multiletter control sequences out of 65536+600000
  69 fonts using 4342975 bytes
- 87i,11n,88p,783b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,11n,88p,783b,854s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{
 C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
 :/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Use
@@ -1864,9 +1866,9 @@ m/lmmi12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
 mr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri
 12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
 0.pfb>
-Output written on main.pdf (46 pages, 2085478 bytes).
+Output written on main.pdf (47 pages, 2091838 bytes).
 
-PDF statistics: 1279 PDF objects out of 1440 (max. 8388607)
- 917 named destinations out of 1000 (max. 131072)
+PDF statistics: 1326 PDF objects out of 1440 (max. 8388607)
+ 960 named destinations out of 1000 (max. 131072)
  208 words of extra memory for PDF output out of 10000 (max. 100000000)
 
