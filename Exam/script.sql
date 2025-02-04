@@ -7,6 +7,7 @@ BEGIN
     EXECUTE IMMEDIATE 'DROP TYPE AccountTY FORCE';
     EXECUTE IMMEDIATE 'DROP TYPE ContractTY FORCE';
     EXECUTE IMMEDIATE 'DROP TYPE FeedbackTY FORCE';
+    EXECUTE IMMEDIATE 'DROP TYPE LocationTY FORCE';
 END;
 /
 
@@ -24,6 +25,14 @@ END;
 
 CREATE OR REPLACE Procedure CreateTypes IS
 BEGIN
+
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE TYPE LocationTY AS OBJECT (
+        Region VARCHAR2(50),
+        City VARCHAR2(50),
+        Street VARCHAR2(50)
+    )';
+
+
     EXECUTE IMMEDIATE 'CREATE OR REPLACE TYPE TeamTY AS OBJECT (
         Code VARCHAR2(20),
         Name VARCHAR2(50),
@@ -32,7 +41,7 @@ BEGIN
 
     EXECUTE IMMEDIATE 'CREATE OR REPLACE TYPE FacilityTY AS OBJECT (
         Name VARCHAR2(50),
-        Location VARCHAR2(100),
+        Location LocationTY,
         Type VARCHAR2(20),
         EfficiencyScore NUMBER,
         MaxOutputEnergy NUMBER,
@@ -244,7 +253,11 @@ BEGIN
         INSERT INTO Facility VALUES (
             FacilityTY(
                 'Facility' || TO_CHAR(i),
-                'Location' || TO_CHAR(i),
+                LocationTY(
+                    'Region' || TO_CHAR(i),
+                    'City' || TO_CHAR(i),
+                    'Street' || TO_CHAR(i)
+                ),
                 CASE MOD(i, 4)
                     WHEN 0 THEN 'wind'
                     WHEN 1 THEN 'solar'
@@ -753,7 +766,7 @@ INSERT INTO FACILITY
 VALUES (
 FacilityTY(
     'FacilityWeb', 
-    'LocationTest', 
+    LocationTY('RegionWeb', 'CityWeb', 'StreetWeb'), 
     'wind', 
     100, 
     10000000, 
@@ -790,7 +803,7 @@ INSERT INTO FACILITY
 VALUES (
 FacilityTY(
     'FacilityWeb2', 
-    'LocationTest', 
+    LocationTY('RegionWeb2', 'CityWeb2', 'StreetWeb2'),
     'wind', 
     100, 
     10000000, 
@@ -818,7 +831,7 @@ SELECT * FROM Customer WHERE Code = 'Gianfry';
 
 SELECT * FROM CONTRACT WHERE ID = 'ContractWeb';
 
-SELECT * FROM Facility WHERE Name = 'FacilityWeb';
+SELECT * FROM Facility WHERE Name = 'FacilityWeb2';
 
 
 
@@ -884,7 +897,7 @@ INSERT INTO Facility
 VALUES (
 FacilityTY(
     'FacilityTest', 
-    'LocationTest', 
+    LocationTY('RegionTest', 'CityTest', 'StreetTest'),
     'wind', 
     100, 
     2, 
@@ -915,7 +928,7 @@ ContractTY(
 INSERT INTO Facility VALUES (
     FacilityTY(
         'FacilityTest2', 
-        'LocationTest', 
+        LocationTY('RegionTest', 'CityTest', 'StreetTest'), 
         'wind', 
         100, 
         10000000, 
@@ -992,7 +1005,7 @@ INSERT INTO FACILITY
 VALUES (
 FacilityTY(
     'FacilityTest3', 
-    'LocationTest', 
+    LocationTY('RegionTest', 'CityTest', 'StreetTest'),
     'wind', 
     100, 
     10000000, 

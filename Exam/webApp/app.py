@@ -135,8 +135,8 @@ def view_facility_energy():
             SELECT DEREF(e.Team).Code AS team_code
               FROM Employee e
              WHERE e.Manager = 'Y'
-             ORDER BY e.DoB ASC
              AND e.Team IS NOT NULL
+             ORDER BY e.DoB ASC
              FETCH FIRST 1 ROWS ONLY
         """
         cur.execute(query_oldest_manager)

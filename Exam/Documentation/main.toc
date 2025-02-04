@@ -9,7 +9,7 @@
 \contentsline {subsubsection}{\numberline {1.2.4}Entity-Relationship Diagram}{7}{subsubsection.1.2.4}%
 \contentsline {paragraph}{SKELETON SCHEMA}{7}{section*.11}%
 \contentsline {paragraph}{FINAL SCHEMA}{8}{section*.13}%
-\contentsline {subsubsection}{\numberline {1.2.5}Business Rules}{8}{subsubsection.1.2.5}%
+\contentsline {subsubsection}{\numberline {1.2.5}Business Rules}{9}{subsubsection.1.2.5}%
 \contentsline {section}{\numberline {2}Logical Design}{10}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Volume Table}{10}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Access Table}{10}{subsection.2.2}%
