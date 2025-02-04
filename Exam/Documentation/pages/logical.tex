@@ -52,9 +52,9 @@ Lets consider the volumes for a year
     Facility & E & 1 & R \\ \hline
     Linked & R & 1 & W \\ \hline
     Account & E & 1 & R \\ \hline
-    Facility & E & 1 & W \\ \hline
     Provides & R & 9000 & R \\ \hline
     Contract & E & 9000 & R \\ \hline
+    Facility & E & 1 & W \\ \hline
     \end{tabularx}
     \caption{Access Table for Operation2}
 \end{table}
@@ -182,7 +182,10 @@ Contract & E & 900.000 & R \\ \hline
 
 \subsubsection{Redundancies and Generalization}
 \begin{itemize}
-    \item \textbf{Redundancies:} The number of facilities managed by a team is not stored in the schema, as it can be calculated by counting the number of facilities managed by the team. The score of the team can be derived by the following formula: $score = \frac{energy\_efficiency + uptime + AVG(customer\_score)}{3}$ and is not stored in the schema to avoid redundancy. Due to the previous analysis, the redundancy of the efficiency score and sumEngergyOutput in the facility are kept in the schema
+    \item \textbf{Redundancies:} The number of contracts handled by a team (projects) is not stored in the schema, as it can be calculated by using the facilities managed by the team and their contracts. The score of the team can be derived by the following formula: \[
+\text{score} = \frac{\frac{1}{\text{energy\_efficiency}} + \text{uptime} + \text{AVG}(\text{customer\_score})}{3}
+\]
+ and is not stored in the schema to avoid redundancy. Due to the previous analysis, the redundancy of the efficiency score and sumEngergyOutput in the facility are kept in the schema
     \item \textbf{Generalization:} The schema doesn't contain any generalization since there aren't different operations for them. There is a \textbf{type} attribute in the \textbf{Customer} and \textbf{Contract} entities so that the business rule related to the type of contract can be enforced.
 \end{itemize}
 

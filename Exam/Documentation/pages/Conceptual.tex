@@ -25,37 +25,6 @@ The requirements for the database are the following:\begin{table}[H]
 
 \subsection{Analysis}
 
-\subsubsection{Glossary of Terms}
-\begin{table}[H]
-    \renewcommand{\arraystretch}{1.3} % Adjust row height
-    \begin{tabularx}{\textwidth}{|X|X|X|X|}
-    \hline
-    \textbf{Term}& \textbf{Description}  & \textbf{Connections}    & \textbf{Synonyms}     \\ \hline
-    Region      & Area where the facilities are located. & Facility     & Location \\ \hline
-    Facility     & Energy production facility. It emits energy for customers      & Contract,Teams,Region         & Projects\\ \hline
-    Contract     & Energy supply contract. It describes the energy plan. It can be residential or commercial & Account, Facility     &         \\ \hline
-    Customer     & Customer of GreenWorld Energy. It can be residential or commercial       & Account    &        \\ \hline
-    Account      & Customer account. It associated with only one account and one contract & Contract, Customer, Feedback     &        \\ \hline
-    Feedback     & Customer feedback. Used to give a score to each team       & Account,Team     &         Ratings, customer satisfaction \\\hline
-    Team        & Groups of employees that oversees a facility. Each team has a manager       & Facility, Employee, Feedback     &        \\ \hline
-    Employee     & Employee of a GreenWorld Energy's team.      & Team     &        \\ \hline
-    \end{tabularx}
-    \caption{Glossary of Terms}
-    \end{table}
-\newpage
-\subsubsection{Level of Abstraction}
-By considering the synonyms of the terms, we can identify the level of abstraction of the terms. The terms can be classified as follows:
-\begin{itemize}
-    \item \textbf{Region} as Location
-    \item \textbf{Facility} as Facility
-    \item \textbf{Contract} as Contract
-    \item \textbf{Customer} as Customer
-    \item \textbf{Account} as Account
-    \item \textbf{Feedback} as Feedback
-    \item \textbf{Team} as Team
-    \item \textbf{Employee} as Employee
-\end{itemize}
-
 \subsubsection{Reorganization of Concepts}
 The concepts can be reorganized as follows:
 \begin{table}[H]
@@ -120,7 +89,41 @@ The concepts can be reorganized as follows:
     Each team is represented by the main responsible employee and other employees identified by fiscal code, name, surname, date of birth and date of hiring. \\ \hline
     \end{tabularx}
     \caption{Employee's Concepts}
-    \end{table}
+\end{table}
+
+These concepts are elegible to be entities in the database. They express standalone concepts that can be represented as tables in the database. Region is not included in the concepts because it is not a standalone concept. It is a part of the Facility concept. The Facility concept includes the location of the facility. However, it will be included in the Glossary of Term because of a synonym.
+    \subsubsection{Glossary of Terms}
+    \begin{table}[H]
+        \renewcommand{\arraystretch}{1.3} % Adjust row height
+        \begin{tabularx}{\textwidth}{|X|X|X|X|}
+        \hline
+        \textbf{Term}& \textbf{Description}  & \textbf{Connections}    & \textbf{Synonyms}     \\ \hline
+        Region      & Area where the facilities are located. & Facility     & Location \\ \hline
+        Facility     & Energy production facility. It emits energy for customers      & Contract,Teams,Region         &\\ \hline
+        Contract     & Energy supply contract. It describes the energy plan. It can be residential or commercial & Account, Facility     &  Projects        \\ \hline
+        Customer     & Customer of GreenWorld Energy. It can be residential or commercial       & Account    &        \\ \hline
+        Account      & Customer account. It associated with only one account and one contract & Contract, Customer, Feedback     &        \\ \hline
+        Feedback     & Customer feedback. Used to give a score to each team       & Account,Team     &         Ratings, customer satisfaction \\\hline
+        Team        & Groups of employees that oversees a facility. Each team has a manager       & Facility, Employee, Feedback     &  Management team       \\ \hline
+        Employee     & Employee of a GreenWorld Energy's team.      & Team     &        \\ \hline
+        \end{tabularx}
+        \caption{Glossary of Terms}
+        \end{table}
+  
+    \subsubsection{Level of Abstraction}
+    By considering the synonyms of the terms, we can identify the level of abstraction of the terms. The terms can be classified as follows:
+    \begin{itemize}
+        \item \textbf{Region} as Location
+        \item \textbf{Facility} as Facility
+        \item \textbf{Contract} as Contract
+        \item \textbf{Customer} as Customer
+        \item \textbf{Account} as Account
+        \item \textbf{Feedback} as Feedback
+        \item \textbf{Team} as Team
+        \item \textbf{Employee} as Employee
+    \end{itemize}
+
+
 
 \subsubsection{Entity-Relationship Diagram}
 

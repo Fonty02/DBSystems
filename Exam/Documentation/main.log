@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  4 FEB 2025 13:09
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  4 FEB 2025 18:31
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/fonta/Desktop/Magistrale/Repo/DBSystems/Exam/Documentation/main
@@ -1389,142 +1389,147 @@ Overfull \hbox (10.56235pt too wide) in paragraph at lines 3--3
 
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1] (./pages/Conceptual.tex
-Underfull \hbox (badness 3514) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 ci-li-ties are lo-ca-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Ener-gy pro-duc-
- []
-
-
-Underfull \hbox (badness 1237) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 tion fa-ci-li-ty. It
- []
-
-
-Underfull \hbox (badness 1946) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 emi-ts ener-gy for
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Con-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 tract,Teams,Re-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Ener-gy sup-ply
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 re-si-den-tial or
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Cu-sto-mer ac-
- []
-
-
-Underfull \hbox (badness 1484) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 ac-count and one
- []
-
-
-Underfull \hbox (badness 2293) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Con-tract, Cu-sto-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Cu-sto-mer feed-
- []
-
-
-Underfull \hbox (badness 2205) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 back. Used to
- []
-
-
-Underfull \hbox (badness 3758) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 gi-ve a sco-re to
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Groups of em-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 ployees that
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Fa-ci-li-ty,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 Em-ployee,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]|\OT1/lmr/m/n/12 Em-ployee of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
-\OT1/lmr/m/n/12 a Gree-n-World
- []
-
-
 
 [2]
 
 [3]
-Overfull \vbox (38.95323pt too high) has occurred while \output is active []
+Underfull \hbox (badness 3514) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 ci-li-ties are lo-ca-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Ener-gy pro-duc-
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 tion fa-ci-li-ty. It
+ []
+
+
+Underfull \hbox (badness 1946) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 emi-ts ener-gy for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 tract,Teams,Re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Ener-gy sup-ply
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 re-si-den-tial or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Cu-sto-mer ac-
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 ac-count and one
+ []
+
+
+Underfull \hbox (badness 2293) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Con-tract, Cu-sto-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Cu-sto-mer feed-
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 back. Used to
+ []
+
+
+Underfull \hbox (badness 3758) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 gi-ve a sco-re to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Groups of em-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 ployees that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Fa-ci-li-ty,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 Em-ployee,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Ma-na-ge-ment
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]|\OT1/lmr/m/n/12 Em-ployee of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+\OT1/lmr/m/n/12 a Gree-n-World
+ []
 
 
 
 [4]
 
 [5]
-<images/SkeletonSchema.png, id=187, 1284.8pt x 506.89375pt>
-File: images/SkeletonSchema.png Graphic file (type png)
-<use images/SkeletonSchema.png>
-Package luatex.def Info: images/SkeletonSchema.png  used on input line 130.
-(luatex.def)             Requested size: 424.06033pt x 167.3064pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--132
-
- []
+Overfull \vbox (16.70323pt too high) has occurred while \output is active []
 
 
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+<images/SkeletonSchema.png, id=195, 1284.8pt x 506.89375pt>
+File: images/SkeletonSchema.png Graphic file (type png)
+<use images/SkeletonSchema.png>
+Package luatex.def Info: images/SkeletonSchema.png  used on input line 133.
+(luatex.def)             Requested size: 424.06033pt x 167.3064pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--135
 
  []
 
-<images/ER.png, id=197, 1094.0875pt x 626.34pt>
-File: images/ER.png Graphic file (type png)
-<use images/ER.png>
-Package luatex.def Info: images/ER.png  used on input line 148.
-(luatex.def)             Requested size: 424.06033pt x 242.76158pt.
 
 
 [7<./images/SkeletonSchema.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+<images/ER.png, id=203, 1094.0875pt x 626.34pt>
+File: images/ER.png Graphic file (type png)
+<use images/ER.png>
+Package luatex.def Info: images/ER.png  used on input line 151.
+(luatex.def)             Requested size: 424.06033pt x 242.76158pt.
+
 
 [8<./images/ER.png>])
 
@@ -1577,11 +1582,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--94
 [12]
 
 [13]
-<images/UML.png, id=243, 1536.74126pt x 908.39375pt>
+<images/UML.png, id=243, 1536.74126pt x 909.3975pt>
 File: images/UML.png Graphic file (type png)
 <use images/UML.png>
-Package luatex.def Info: images/UML.png  used on input line 194.
-(luatex.def)             Requested size: 424.06033pt x 250.6615pt.
+Package luatex.def Info: images/UML.png  used on input line 197.
+(luatex.def)             Requested size: 424.06033pt x 250.93848pt.
 )
 
 [14]
@@ -1707,12 +1712,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
-<images/ExPlan1.png, id=973, 1148.79187pt x 228.10219pt>
+<images/ExPlan1.png, id=971, 1148.79187pt x 228.10219pt>
 File: images/ExPlan1.png Graphic file (type png)
 <use images/ExPlan1.png>
 Package luatex.def Info: images/ExPlan1.png  used on input line 15.
 (luatex.def)             Requested size: 424.06033pt x 84.19809pt.
-<images/Op1Index.png, id=974, 1141.26375pt x 54.2025pt>
+<images/Op1Index.png, id=972, 1141.26375pt x 54.2025pt>
 File: images/Op1Index.png Graphic file (type png)
 <use images/Op1Index.png>
 Package luatex.def Info: images/Op1Index.png  used on input line 23.
@@ -1727,7 +1732,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
 
-<images/ExPlan2.png, id=975, 1047.915pt x 437.38406pt>
+<images/ExPlan2.png, id=973, 1047.915pt x 437.38406pt>
 File: images/ExPlan2.png Graphic file (type png)
 <use images/ExPlan2.png>
 Package luatex.def Info: images/ExPlan2.png  used on input line 35.
@@ -1739,7 +1744,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
-<images/Op2Index.png, id=987, 1138.2525pt x 145.29282pt>
+<images/Op2Index.png, id=985, 1138.2525pt x 145.29282pt>
 File: images/Op2Index.png Graphic file (type png)
 <use images/Op2Index.png>
 Package luatex.def Info: images/Op2Index.png  used on input line 43.
@@ -1749,7 +1754,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
-<images/ExPlan3.png, id=988, 484.05844pt x 560.0925pt>
+<images/ExPlan3.png, id=986, 484.05844pt x 560.0925pt>
 File: images/ExPlan3.png Graphic file (type png)
 <use images/ExPlan3.png>
 Package luatex.def Info: images/ExPlan3.png  used on input line 56.
@@ -1761,7 +1766,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-<images/FacilityName.png, id=999, 1142.76938pt x 85.06781pt>
+<images/FacilityName.png, id=997, 1142.76938pt x 85.06781pt>
 File: images/FacilityName.png Graphic file (type png)
 <use images/FacilityName.png>
 Package luatex.def Info: images/FacilityName.png  used on input line 64.
@@ -1769,7 +1774,7 @@ Package luatex.def Info: images/FacilityName.png  used on input line 64.
 
 
 [37<./images/ExPlan3.png>]
-<images/TeamCode.png, id=1007, 1135.99406pt x 84.315pt>
+<images/TeamCode.png, id=1005, 1135.99406pt x 84.315pt>
 File: images/TeamCode.png Graphic file (type png)
 <use images/TeamCode.png>
 Package luatex.def Info: images/TeamCode.png  used on input line 70.
@@ -1779,7 +1784,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
-<images/ExPlan4.png, id=1008, 635.37375pt x 502.87875pt>
+<images/ExPlan4.png, id=1006, 635.37375pt x 502.87875pt>
 File: images/ExPlan4.png Graphic file (type png)
 <use images/ExPlan4.png>
 Package luatex.def Info: images/ExPlan4.png  used on input line 82.
@@ -1791,12 +1796,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
-<images/OldManNOIndex.png, id=1018, 1147.28625pt x 197.98969pt>
+<images/OldManNOIndex.png, id=1016, 1147.28625pt x 197.98969pt>
 File: images/OldManNOIndex.png Graphic file (type png)
 <use images/OldManNOIndex.png>
 Package luatex.def Info: images/OldManNOIndex.png  used on input line 90.
 (luatex.def)             Requested size: 424.06033pt x 73.1795pt.
-<images/OldManWithIndex.png, id=1019, 1148.03906pt x 223.58531pt>
+<images/OldManWithIndex.png, id=1017, 1148.03906pt x 223.58531pt>
 File: images/OldManWithIndex.png Graphic file (type png)
 <use images/OldManWithIndex.png>
 Package luatex.def Info: images/OldManWithIndex.png  used on input line 102.
@@ -1808,7 +1813,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
-<images/ExPlan5.png, id=1031, 435.87843pt x 320.69812pt>
+<images/ExPlan5.png, id=1029, 435.87843pt x 320.69812pt>
 File: images/ExPlan5.png Graphic file (type png)
 <use images/ExPlan5.png>
 Package luatex.def Info: images/ExPlan5.png  used on input line 117.
@@ -1820,7 +1825,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
-<images/EffScore.png, id=1040, 1142.01656pt x 109.1578pt>
+<images/EffScore.png, id=1038, 1142.01656pt x 109.1578pt>
 File: images/EffScore.png Graphic file (type png)
 <use images/EffScore.png>
 Package luatex.def Info: images/EffScore.png  used on input line 125.
@@ -1855,38 +1860,38 @@ Overfull \hbox (33.03702pt too wide) in paragraph at lines 95--96
 [46]
 
 [47]
-<images/homepage.png, id=1271, 1431.09656pt x 272.51813pt>
+<images/homepage.png, id=1270, 1431.09656pt x 272.51813pt>
 File: images/homepage.png Graphic file (type png)
 <use images/homepage.png>
-Package luatex.def Info: images/homepage.png  used on input line 218.
+Package luatex.def Info: images/homepage.png  used on input line 219.
 (luatex.def)             Requested size: 424.06033pt x 80.74976pt.
-<images/Op1.png, id=1272, 1440.88312pt x 552.56438pt>
+<images/Op1.png, id=1271, 1440.88312pt x 552.56438pt>
 File: images/Op1.png Graphic file (type png)
 <use images/Op1.png>
-Package luatex.def Info: images/Op1.png  used on input line 224.
+Package luatex.def Info: images/Op1.png  used on input line 225.
 (luatex.def)             Requested size: 424.06033pt x 162.61722pt.
-<images/Op2.png, id=1273, 1431.09656pt x 599.23875pt>
+<images/Op2.png, id=1272, 1431.09656pt x 599.23875pt>
 File: images/Op2.png Graphic file (type png)
 <use images/Op2.png>
-Package luatex.def Info: images/Op2.png  used on input line 231.
+Package luatex.def Info: images/Op2.png  used on input line 232.
 (luatex.def)             Requested size: 424.06033pt x 177.56024pt.
 
 
 [48<./images/homepage.png><./images/Op1.png>]
-<images/Op3.png, id=1289, 1434.86063pt x 356.0803pt>
+<images/Op3.png, id=1288, 1434.86063pt x 356.0803pt>
 File: images/Op3.png Graphic file (type png)
 <use images/Op3.png>
-Package luatex.def Info: images/Op3.png  used on input line 238.
+Package luatex.def Info: images/Op3.png  used on input line 239.
 (luatex.def)             Requested size: 424.06033pt x 105.23294pt.
-<images/Op4.png, id=1290, 1438.6247pt x 418.56375pt>
+<images/Op4.png, id=1289, 1438.6247pt x 418.56375pt>
 File: images/Op4.png Graphic file (type png)
 <use images/Op4.png>
-Package luatex.def Info: images/Op4.png  used on input line 245.
+Package luatex.def Info: images/Op4.png  used on input line 246.
 (luatex.def)             Requested size: 424.06033pt x 123.37943pt.
-<images/Op5.png, id=1291, 1425.07407pt x 703.87968pt>
+<images/Op5.png, id=1290, 1425.07407pt x 703.87968pt>
 File: images/Op5.png Graphic file (type png)
 <use images/Op5.png>
-Package luatex.def Info: images/Op5.png  used on input line 252.
+Package luatex.def Info: images/Op5.png  used on input line 253.
 (luatex.def)             Requested size: 424.06033pt x 209.44708pt.
 )
 
@@ -1898,39 +1903,36 @@ LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B0803BACC0F49406CCFBDFA9D957A40A;3874.
+(rerunfilecheck)             Checksum: 148789711BA5DB3EB19F5457EBD1E784;3874.
 )
 
 Here is how much of LuaTeX's memory you used:
- 40933 strings out of 475518
- 381555,1977958 words of node,token memory allocated
- 614 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 14 attribute, 67 glue_spec
-, 9 attribute_list, 2 write nodes
-   avail lists: 1:1,2:6167,3:409,4:437,5:8459,6:182,7:14331,8:63,9:17042,10:33,1
+ 40936 strings out of 475518
+ 381565,1977958 words of node,token memory allocated
+ 620 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 16 attribute, 67 glue_spec
+, 10 attribute_list, 2 write nodes
+   avail lists: 1:2,2:6167,3:410,4:437,5:8459,6:182,7:14342,8:39,9:17042,10:33,1
 1:851
- 61819 multiletter control sequences out of 65536+600000
+ 61821 multiletter control sequences out of 65536+600000
  69 fonts using 4342975 bytes
- 87i,11n,88p,783b,854s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,11n,88p,783b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{
 C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
 :/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Use
 rs/fonta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users/f
-onta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:
-/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/lm/lmbx12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/lm/lmbx8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
-m/lmmi12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
-/lmr12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
-mr8.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri
-12.pfb><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
-0.pfb>
-Output written on main.pdf (51 pages, 2170545 bytes).
+onta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pf
+b><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb
+><C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><
+C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C
+:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/
+Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Use
+rs/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/User
+s/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+Output written on main.pdf (51 pages, 2151044 bytes).
 
-PDF statistics: 1383 PDF objects out of 1440 (max. 8388607)
- 973 named destinations out of 1000 (max. 131072)
+PDF statistics: 1376 PDF objects out of 1440 (max. 8388607)
+ 974 named destinations out of 1000 (max. 131072)
  248 words of extra memory for PDF output out of 10000 (max. 100000000)
 

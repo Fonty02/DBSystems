@@ -2,13 +2,13 @@
 \babel@toc {italian}{}\relax 
 \contentsline {section}{\numberline {1}Conceptual Design}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Requirements}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Analysis}{4}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Glossary of Terms}{4}{subsubsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Level of Abstraction}{5}{subsubsection.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.2.3}Reorganization of Concepts}{5}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2}Analysis}{2}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Reorganization of Concepts}{2}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Glossary of Terms}{6}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Level of Abstraction}{7}{subsubsection.1.2.3}%
 \contentsline {subsubsection}{\numberline {1.2.4}Entity-Relationship Diagram}{7}{subsubsection.1.2.4}%
 \contentsline {paragraph}{SKELETON SCHEMA}{7}{section*.11}%
-\contentsline {paragraph}{FINAL SCHEMA}{7}{section*.13}%
+\contentsline {paragraph}{FINAL SCHEMA}{8}{section*.13}%
 \contentsline {subsubsection}{\numberline {1.2.5}Business Rules}{8}{subsubsection.1.2.5}%
 \contentsline {section}{\numberline {2}Logical Design}{10}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Volume Table}{10}{subsection.2.1}%

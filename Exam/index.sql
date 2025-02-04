@@ -49,6 +49,7 @@ SELECT COUNT(*) AS v_count_team
 SELECT DEREF(e.Team).Code AS team_code
               FROM Employee e
              WHERE e.Manager = 'Y'
+             AND e.Team IS NOT NULL
              ORDER BY e.DoB ASC
              FETCH FIRST 1 ROWS ONLY;
 
@@ -118,6 +119,7 @@ EXPLAIN PLAN FOR
 SELECT DEREF(e.Team).Code AS team_code
               FROM Employee e
              WHERE e.Manager = 'Y'
+             AND e.Team IS NOT NULL
              ORDER BY e.DoB ASC
              FETCH FIRST 1 ROWS ONLY;
 SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
