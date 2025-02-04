@@ -177,7 +177,6 @@ BEGIN
      CreateTables;
 END;
 
-
 /
 
 
@@ -719,6 +718,11 @@ END;
 /
 
 
+-- Indexes Creation
+
+CREATE INDEX Employee_DoB_Index ON Employee(Dob); 
+
+
 SET SERVEROUTPUT OFF
 /
 BEGIN
@@ -733,6 +737,118 @@ END;
 
 SET SERVEROUTPUT ON
 /
+
+-- for web application
+INSERT INTO TEAM
+VALUES (
+    TeamTY(
+        'TeamWeb',
+        'TeamNameWeb',
+        8
+    )
+);
+
+
+INSERT INTO FACILITY
+VALUES (
+FacilityTY(
+    'FacilityWeb', 
+    'LocationTest', 
+    'wind', 
+    100, 
+    10000000, 
+    0, 
+    (SELECT REF(t) FROM Team t WHERE t.Code = 'Team1')
+)
+);
+
+
+INSERT INTO CUSTOMER
+VALUES (
+CustomerTY
+(
+    'CustomerWeb', 
+    'NameWeb', 
+    'SurnameWeb', 
+    'ciao@gmail.com',
+    'Commercial',
+    TO_DATE('1985-01-01','YYYY-MM-DD')
+)
+);
+
+
+INSERT INTO Account
+VALUES (
+AccountTY(
+    'AccountWeb', 
+    (SELECT REF(c) FROM Customer c WHERE c.Code = 'CustomerWeb')
+)
+);
+
+
+INSERT INTO FACILITY
+VALUES (
+FacilityTY(
+    'FacilityWeb2', 
+    'LocationTest', 
+    'wind', 
+    100, 
+    10000000, 
+    0, 
+    NULL
+)
+);
+
+
+INSERT INTO TEAM
+VALUES (
+    TeamTY(
+        'TeamWeb2',
+        'TeamNameWeb2',
+        8
+    )
+);
+
+
+--TEST
+
+
+SELECT * FROM Customer WHERE Code = 'Gianfry';
+
+
+SELECT * FROM CONTRACT WHERE ID = 'ContractWeb';
+
+SELECT * FROM Facility WHERE Name = 'FacilityWeb';
+
+
+
+
+
+
+--test triggers for age
+INSERT INTO Customer VALUES (
+    CustomerTY(
+        'CustomerMinor',
+        'NameMinor',
+        'SurnameMinor',
+        'mine@d.com',
+        'Commercial',
+        TO_DATE('2020-01-01', 'YYYY-MM-DD')
+    )
+);
+
+INSERT INTO EMPLOYEE VALUES (
+    EmployeeTY(
+        'EmployeeMinor',
+        'NameMinor',
+        'SurnameMinor',
+        TO_DATE('2020-01-01', 'YYYY-MM-DD'),
+        TO_DATE('2021-01-01', 'YYYY-MM-DD'),
+        'N',
+        (SELECT REF(t) FROM Team t WHERE t.Code = 'Team1')
+    )
+);
+
 
 --test trigger for employeeManager
 
@@ -919,103 +1035,4 @@ ContractTY(
     (SELECT REF(f) FROM Facility f WHERE f.Name = 'FacilityTest3')
 )
 );
-
-
--- for web application
-INSERT INTO TEAM
-VALUES (
-    TeamTY(
-        'TeamWeb',
-        'TeamNameWeb',
-        8
-    )
-);
-
-
-INSERT INTO FACILITY
-VALUES (
-FacilityTY(
-    'FacilityWeb', 
-    'LocationTest', 
-    'wind', 
-    100, 
-    10000000, 
-    0, 
-    (SELECT REF(t) FROM Team t WHERE t.Code = 'Team1')
-)
-);
-
-
-INSERT INTO CUSTOMER
-VALUES (
-CustomerTY
-(
-    'CustomerWeb', 
-    'NameWeb', 
-    'SurnameWeb', 
-    'ciao@gmail.com',
-    'Commercial',
-    TO_DATE('1985-01-01','YYYY-MM-DD')
-)
-);
-
-
-INSERT INTO Account
-VALUES (
-AccountTY(
-    'AccountWeb', 
-    (SELECT REF(c) FROM Customer c WHERE c.Code = 'CustomerWeb')
-)
-);
-
-
-SELECT * FROM CONTRACT WHERE ID = 'ContractWeb';
-
-
-SELECT * FROM CONTRACT WHERE ACCOUNT = (SELECT REF(a) FROM Account a WHERE a.Code = 'AccountWeb');
-
-
-
-INSERT INTO FACILITY
-VALUES (
-FacilityTY(
-    'FacilityWeb2', 
-    'LocationTest', 
-    'wind', 
-    100, 
-    10000000, 
-    0, 
-    NULL
-)
-);
-
-
-INSERT INTO TEAM
-VALUES (
-    TeamTY(
-        'TeamWeb2',
-        'TeamNameWeb2',
-        8
-    )
-);
-
-
-
-
-SELECT * FROM Customer WHERE Code = 'Gianfry';
-SELECT DEREF(e.Team).Code AS team_code
-              FROM Employee e
-             WHERE e.Manager = 'Y'
-             ORDER BY e.DoB ASC
-             FETCH FIRST 1 ROWS ONLY;
-
-
- SELECT f.Name 
-                  FROM Facility f
-                 WHERE DEREF(f.Team).Code = 'Team24';
-
-
-
-
-SELECT * FROM CONTRACT WHERE ID = 'ContractWeb';
 

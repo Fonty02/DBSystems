@@ -1,9 +1,3 @@
--- Indexes Creation
-
-CREATE INDEX Employee_DoB_Index ON Employee(Dob); 
-
-
-
 
 --INDEX TEST
 SET AUTOTRACE ON
