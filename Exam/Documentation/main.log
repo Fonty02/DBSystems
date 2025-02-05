@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  4 FEB 2025 19:37
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.31)  5 FEB 2025 19:35
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/fonta/Desktop/Magistrale/Repo/DBSystems/Exam/Documentation/main
@@ -1582,11 +1582,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--94
 [12]
 
 [13]
-<images/UML.png, id=243, 1556.81625pt x 1034.86626pt>
+<images/UML.png, id=243, 1557.82pt x 1035.87pt>
 File: images/UML.png Graphic file (type png)
 <use images/UML.png>
 Package luatex.def Info: images/UML.png  used on input line 197.
-(luatex.def)             Requested size: 424.06033pt x 281.88098pt.
+(luatex.def)             Requested size: 424.06033pt x 281.9647pt.
 )
 
 [14]
@@ -1930,7 +1930,7 @@ C:/Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C
 Users/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Use
 rs/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/User
 s/fonta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-Output written on main.pdf (51 pages, 2149713 bytes).
+Output written on main.pdf (51 pages, 2150016 bytes).
 
 PDF statistics: 1376 PDF objects out of 1440 (max. 8388607)
  974 named destinations out of 1000 (max. 131072)
