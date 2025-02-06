@@ -731,6 +731,19 @@ END;
 /
 
 
+CREATE OR REPLACE TRIGGER trg_facility_no_team
+BEFORE INSERT ON Contract
+FOR EACH ROW
+DECLARE
+    v_facility_obj FacilityTY;
+BEGIN
+    SELECT DEREF(:NEW.Facility) INTO v_facility_obj FROM DUAL;
+    IF v_facility_obj.Team IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20004, 'Error: Facility has no team');
+    END IF;
+END;
+/
+
 -- Indexes Creation
 
 CREATE INDEX Employee_DoB_Index ON Employee(Dob); 
@@ -1049,3 +1062,34 @@ ContractTY(
 )
 );
 
+
+--test trigger for FacilityNoTeam
+
+INSERT INTO Facility
+VALUES (
+FacilityTY(
+    'FacilityTest4', 
+    LocationTY('RegionTest', 'CityTest', 'StreetTest'),
+    'wind', 
+    100, 
+    10000000, 
+    0, 
+    NULL
+)
+);
+
+INSERT INTO Contract
+VALUES (
+ContractTY
+(
+    'ContractTest4', 
+    'Y', 
+    'Commercial', 
+    TO_DATE('2023-01-01','YYYY-MM-DD'), 
+    100, 
+    2500, 
+    1, 
+    (SELECT REF(a) FROM Account a WHERE a.Code = 'AccountTest'), 
+    (SELECT REF(f) FROM Facility f WHERE f.Name = 'FacilityTest4')
+)
+);

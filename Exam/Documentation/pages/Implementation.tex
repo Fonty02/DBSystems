@@ -581,6 +581,22 @@ END;
 This trigger is used to check if the energy plan and the cost of the contract are changed. If they are, it raises an error, otherwise it allows the operation. It also sets the cost of the contract based on the energy plan when a new contract is inserted.
 
 
+\begin{lstlisting}
+    CREATE OR REPLACE TRIGGER trg_facility_no_team
+BEFORE INSERT ON Contract
+FOR EACH ROW
+DECLARE
+    v_facility REF FacilityTY;
+BEGIN
+    v_facility := :NEW.Facility;
+    IF (DEREF(v_facility)).Team IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20004, 'Error: Facility has no team');
+    END IF;
+END;
+\end{lstlisting}
+
+This trigger is used to check if the facility has a team. If it doesn't, it raises an error, otherwise the contract is inserted.
+
 \subsection{Operations}
 
 \begin{lstlisting}
